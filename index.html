@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAHARANI — Royal Rajasthani Heritage Couture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <button type="button" class="navbar__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+        <span class="navbar__burger-line"></span>
+        <span class="navbar__burger-line"></span>
+        <span class="navbar__burger-line"></span>
+      </button>
+      <ul class="navbar__links navbar__links--left navbar__desktop-only">
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#new-arrivals">New Arrivals</a></li>
+        <li><a href="#heritage">Heritage</a></li>
+      </ul>
+      <a href="#" class="navbar__logo gold-gradient-text font-display" aria-label="Maharani home">
+        <span class="navbar__logo-mark" aria-hidden="true">
+          <svg width="22" height="14" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L6 10v4l4 2 4-6 4 6 4-6 4 6 4-2v-4L22 2z" stroke="currentColor" stroke-width="1.2"/><path d="M4 24h36" stroke="currentColor" stroke-width="1"/></svg>
+        </span>
+        <span class="navbar__logo-text">Maharani</span>
+      </a>
+      <div class="navbar__right navbar__desktop-only">
+        <ul class="navbar__links navbar__links--inline">
+          <li><a href="#featured">Bridal</a></li>
+          <li><a href="#heritage">About</a></li>
+        </ul>
+        <button type="button" class="navbar__icon" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+        <button type="button" class="navbar__icon navbar__icon--cart" aria-label="Shopping bag, 2 items">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h15l-1.2 12H7.2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+          <span class="navbar__cart-count">2</span>
+        </button>
+      </div>
+      <div class="navbar__mobile-actions">
+        <button type="button" class="navbar__icon navbar__icon--cart" aria-label="Shopping bag, 2 items">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h15l-1.2 12H7.2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+          <span class="navbar__cart-count">2</span>
+        </button>
+      </div>
+    </nav>
+    <div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Menu" aria-hidden="true">
+      <ul class="nav-drawer__links">
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#new-arrivals">New Arrivals</a></li>
+        <li><a href="#heritage">Heritage</a></li>
+        <li><a href="#featured">Bridal</a></li>
+        <li><a href="#heritage">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-label="Featured">
+      <div class="hero-bg">
+        <div class="hero-layer hero-layer--arches" aria-hidden="true"></div>
+        <img
+          class="hero-bg__img"
+          src="https://nitikagujral.com/cdn/shop/products/Deep-Red-Raw-Silk-Lehenga-with-Gold-Choli-and-Tulle-Dupatta-1.jpg?v=1664629754"
+          width="1920"
+          height="1080"
+          alt="Maharani couture — model in maroon bridal lehenga framed by palace arches"
+          fetchpriority="high"
+          decoding="async"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&amp;q=90'"
+        />
+        <div class="hero-layer hero-layer--wash" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-vignette" aria-hidden="true"></div>
+        <div class="hero-grain" aria-hidden="true"></div>
+        <div class="hero-fade-bottom" aria-hidden="true"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-ornament hero-stagger font-accent" aria-hidden="true">✦</div>
+        <p class="hero-eyebrow hero-stagger font-body">Est. Rajasthan &middot; Heritage Couture</p>
+        <h1 class="hero-title luxury-heading hero-stagger">
+          <span class="hero-title__plain">Wear the Royal </span><span class="gold-gradient-text hero-title__heritage">Heritage</span><span class="hero-title__plain"> of Rajasthan</span>
+        </h1>
+        <p class="hero-sub font-body hero-stagger">Handcrafted couture steeped in centuries of Rajasthani artistry</p>
+        <div class="hero-ctas hero-stagger">
+          <a class="gold-shimmer-btn font-accent" href="#collections"><span class="gold-shimmer-btn__label">Explore Collections</span></a>
+          <a class="gold-outline-btn font-accent" href="#heritage">Our Heritage</a>
+        </div>
+      </div>
+      <a class="hero-scroll" href="#collections" aria-label="Scroll to collections">
+        <span class="hero-scroll__label font-accent">Scroll</span>
+        <span class="hero-scroll__line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <section id="collections" class="section collections royal-section">
+      <div class="royal-section__glow" aria-hidden="true"></div>
+      <div class="section-head section-head--court section-reveal" data-reveal>
+        <span class="section-kicker font-accent gold-text">Curated for Royalty</span>
+        <h2 class="section-title luxury-heading">Our Collections</h2>
+        <span class="gold-divider" aria-hidden="true"></span>
+      </div>
+      <div class="collection-grid">
+        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="collection-card-media">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=900&q=85" alt="Emerald bridal lehenga with gold embroidery" loading="lazy" />
+          </div>
+          <div class="collection-card-overlay">
+            <h3 class="font-accent">The Emerald Maharani</h3>
+            <p class="font-body">Bridal Lehengas</p>
+          </div>
+        </article>
+        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="collection-card-media">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=900&q=88" alt="Crimson and gold bridal lehenga with intricate embroidery" loading="lazy" />
+          </div>
+          <div class="collection-card-overlay">
+            <h3 class="font-accent">Crimson Heritage</h3>
+            <p class="font-body">Royal Sarees</p>
+          </div>
+        </article>
+        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="collection-card-media">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=900&q=85" alt="Ivory and gold wedding couture" loading="lazy" />
+          </div>
+          <div class="collection-card-overlay">
+            <h3 class="font-accent">Ivory &amp; Gold</h3>
+            <p class="font-body">Wedding Couture</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="featured" class="section featured royal-section">
+      <div class="royal-section__glow" aria-hidden="true"></div>
+      <div class="section-head section-head--court section-reveal" data-reveal>
+        <span class="section-kicker font-accent gold-text">Handpicked Treasures</span>
+        <h2 class="section-title luxury-heading">Featured Pieces</h2>
+        <span class="gold-divider" aria-hidden="true"></span>
+      </div>
+      <div class="product-grid">
+        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="product-card-media">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=85" alt="Royal lehenga in deep red zardozi" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <h3 class="font-accent">Royal Lehenga</h3>
+            <p class="product-meta font-body">Velvet zardozi &middot; twenty-two karat thread</p>
+            <p class="product-price font-accent">₹1,85,000</p>
+            <a class="product-link font-accent" href="#">View Details</a>
+          </div>
+        </article>
+        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="product-card-media">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=88" alt="Royal saree drape with traditional jewelry" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <h3 class="font-accent">Heritage Saree</h3>
+            <p class="product-meta font-body">Handloom Banarasi &middot; tissue pallu</p>
+            <p class="product-price font-accent">₹95,000</p>
+            <a class="product-link font-accent" href="#">View Details</a>
+          </div>
+        </article>
+        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="product-card-media">
+            <img src="https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=88" alt="Heritage couture with ornate Indian jewelry" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <h3 class="font-accent">Rani Haar Dupatta</h3>
+            <p class="product-meta font-body">Organza &middot; pearl and gold border</p>
+            <p class="product-price font-accent">₹1,45,000</p>
+            <a class="product-link font-accent" href="#">View Details</a>
+          </div>
+        </article>
+        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="product-card-media">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=88" alt="Ivory and gold wedding couture ensemble" loading="lazy" />
+          </div>
+          <div class="product-card-body">
+            <h3 class="font-accent">Suryagarh Ensemble</h3>
+            <p class="product-meta font-body">Gajji silk bandhani &middot; couture fit</p>
+            <p class="product-price font-accent">₹2,20,000</p>
+            <a class="product-link font-accent" href="#">View Details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="heritage" class="artisan royal-atelier">
+      <div class="artisan-pattern" aria-hidden="true"></div>
+      <div class="artisan-veil" aria-hidden="true"></div>
+      <div class="artisan-inner">
+        <div class="artisan-visual section-reveal hover-zoom" data-reveal>
+          <div class="artisan-frame gold-border-card">
+            <img src="https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=1000&q=85" alt="Master artisan hands embroidering fabric with gold thread" loading="lazy" />
+          </div>
+        </div>
+        <div class="artisan-copy artisan-copy--court section-reveal" data-reveal>
+          <span class="section-kicker font-accent gold-text">The Atelier</span>
+          <h2 class="artisan-title luxury-heading">The Art Behind the Thread</h2>
+          <p class="artisan-text font-body">For seven generations, our house has worked in the shadow of Udaipur and Jaipur palaces—where jali light falls across silks and every motif carries a name from the court.</p>
+          <p class="artisan-text font-body">Each piece is bench-made: traced, couched, and finished by artisans who apprenticed under their mothers and grandmothers. This is not seasonal fashion. It is architecture you wear—measured in months, not minutes.</p>
+          <div class="artisan-stats">
+            <div class="artisan-stat">
+              <p class="artisan-stat__value font-accent gold-text">200+</p>
+              <p class="artisan-stat__label font-body">Master Artisans</p>
+            </div>
+            <div class="artisan-stat">
+              <p class="artisan-stat__value font-accent gold-text">7</p>
+              <p class="artisan-stat__label font-body">Generations of Craft</p>
+            </div>
+          </div>
+          <a class="gold-outline-btn gold-outline-btn--inline font-accent" href="#contact">Visit Our Atelier</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="new-arrivals" class="section new-arrivals royal-section">
+      <div class="royal-section__glow" aria-hidden="true"></div>
+      <div class="section-head section-head--court section-reveal" data-reveal>
+        <span class="section-kicker font-accent gold-text">Just Arrived</span>
+        <h2 class="section-title luxury-heading">New Arrivals</h2>
+        <span class="gold-divider" aria-hidden="true"></span>
+      </div>
+      <div class="new-arrivals-track new-arrivals-track--royal">
+        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="arrival-card-media">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=700&q=85" alt="Emerald evening lehenga" loading="lazy" />
+          </div>
+          <div class="arrival-card-body">
+            <h3 class="font-accent">Mehrangarh Emerald</h3>
+            <p class="font-body">₹3,25,000</p>
+          </div>
+        </article>
+        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="arrival-card-media">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=85" alt="Ivory couture saree" loading="lazy" />
+          </div>
+          <div class="arrival-card-body">
+            <h3 class="font-accent">Lake Palace Ivory</h3>
+            <p class="font-body">₹1,10,000</p>
+          </div>
+        </article>
+        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="arrival-card-media">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700&q=85" alt="Ruby bridal skirt" loading="lazy" />
+          </div>
+          <div class="arrival-card-body">
+            <h3 class="font-accent">Jaipur Ruby Skirt</h3>
+            <p class="font-body">₹2,85,000</p>
+          </div>
+        </article>
+        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
+          <div class="arrival-card-media">
+            <img src="https://images.unsplash.com/photo-1583391733981-8c5f06f6f5d1?w=700&q=88" alt="Heritage bandhani and silk textiles" loading="lazy" />
+          </div>
+          <div class="arrival-card-body">
+            <h3 class="font-accent">Desert Rose Saree</h3>
+            <p class="font-body">₹88,000</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="cta-luxury royal-cta">
+      <div class="cta-luxury__jali" aria-hidden="true"></div>
+      <div class="cta-luxury__gold-veil" aria-hidden="true"></div>
+      <div class="cta-luxury__inner cta-luxury__inner--court section-reveal" data-reveal>
+        <p class="cta-luxury__eyebrow font-accent gold-text">Private Appointments</p>
+        <h2 class="cta-luxury__title luxury-heading">An Evening in the Palace Boutique</h2>
+        <p class="cta-luxury__sub font-body">Reserve an unhurried session with our head couturier. Champagne, archival swatches, and silhouettes composed for your celebration.</p>
+        <a class="gold-shimmer-btn font-accent" href="#"><span class="gold-shimmer-btn__label">Book Your Viewing</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer royal-footer">
+    <div class="footer-pattern" aria-hidden="true"></div>
+    <div class="footer-crest" aria-hidden="true">✦</div>
+    <div class="footer-inner">
+      <div class="footer-col section-reveal" data-reveal>
+        <p class="footer-logo gold-gradient-text font-display">Maharani</p>
+        <p class="footer-tagline font-body">Est. Rajasthan &middot; Heritage Couture</p>
+        <p class="footer-text font-body">Royal Rajasthani heritage couture for collectors who dress once—and pass down forever.</p>
+      </div>
+      <div class="footer-col section-reveal" data-reveal>
+        <h3 class="footer-heading font-accent">Collections</h3>
+        <ul class="footer-links font-body">
+          <li><a href="#collections">Bridal Lehengas</a></li>
+          <li><a href="#collections">Royal Sarees</a></li>
+          <li><a href="#featured">Wedding Couture</a></li>
+          <li><a href="#new-arrivals">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col section-reveal" data-reveal>
+        <h3 class="footer-heading font-accent">House of Maharani</h3>
+        <ul class="footer-links font-body">
+          <li><a href="#heritage">Our Story</a></li>
+          <li><a href="#heritage">The Atelier</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col section-reveal" data-reveal>
+        <h3 class="footer-heading font-accent">Client Care</h3>
+        <ul class="footer-links font-body">
+          <li><a href="#">White-Glove Shipping</a></li>
+          <li><a href="#">Alterations</a></li>
+          <li><a href="#contact">Contact Concierge</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <span class="gold-divider gold-divider--footer" aria-hidden="true"></span>
+    <div class="footer-bar font-accent">
+      <span>&copy; Maharani Atelier</span>
+      <span class="footer-bar__cities">Jaipur &middot; Udaipur &middot; Mumbai &middot; Delhi</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

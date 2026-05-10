@@ -1,329 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAHARANI — Royal Rajasthani Heritage Couture</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAHARANI — Luxury Rajasthani Heritage Couture</title>
+  <meta name="description" content="Experience timeless Rajasthani heritage couture through cinematic luxury fashion. Handcrafted masterpieces for the discerning collector.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Marcellus:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="site-header" id="site-header">
-    <nav class="navbar" aria-label="Primary">
-      <button type="button" class="navbar__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
-        <span class="navbar__burger-line"></span>
-        <span class="navbar__burger-line"></span>
-        <span class="navbar__burger-line"></span>
-      </button>
-      <ul class="navbar__links navbar__links--left navbar__desktop-only">
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#featured">Shop</a></li>
-        <li><a href="#new-arrivals">New Arrivals</a></li>
-        <li><a href="#heritage">Heritage</a></li>
-      </ul>
-      <a href="#" class="navbar__logo gold-gradient-text font-display" aria-label="Maharani home">
-        <span class="navbar__logo-mark" aria-hidden="true">
-          <svg width="22" height="14" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L6 10v4l4 2 4-6 4 6 4-6 4 6 4-2v-4L22 2z" stroke="currentColor" stroke-width="1.2"/><path d="M4 24h36" stroke="currentColor" stroke-width="1"/></svg>
-        </span>
-        <span class="navbar__logo-text">Maharani</span>
-      </a>
-      <div class="navbar__right navbar__desktop-only">
-        <ul class="navbar__links navbar__links--inline">
-          <li><a href="#featured">Bridal</a></li>
-          <li><a href="#heritage">About</a></li>
-        </ul>
-        <button type="button" class="navbar__icon" aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-        </button>
-        <a href="cart.html" class="navbar__icon navbar__icon--cart" aria-label="Shopping bag, 2 items">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h15l-1.2 12H7.2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-          <span class="navbar__cart-count">2</span>
-        </a>
+  <!-- Loading Animation -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-content">
+      <div class="loading-text">MAHARANI</div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
       </div>
-      <div class="navbar__mobile-actions">
-        <a href="cart.html" class="navbar__icon navbar__icon--cart" aria-label="Shopping bag, 2 items">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h15l-1.2 12H7.2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-          <span class="navbar__cart-count">2</span>
-        </a>
-      </div>
-    </nav>
-    <div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Menu" aria-hidden="true">
-      <ul class="nav-drawer__links">
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#featured">Shop</a></li>
-        <li><a href="#new-arrivals">New Arrivals</a></li>
-        <li><a href="#heritage">Heritage</a></li>
-        <li><a href="#featured">Bridal</a></li>
-        <li><a href="#heritage">About</a></li>
-      </ul>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <section class="hero" id="hero" aria-label="Featured">
-      <div class="hero-bg">
-        <div class="hero-layer hero-layer--arches" aria-hidden="true"></div>
-        <img
-          class="hero-bg__img"
-          src="https://nitikagujral.com/cdn/shop/products/Deep-Red-Raw-Silk-Lehenga-with-Gold-Choli-and-Tulle-Dupatta-1.jpg?v=1664629754"
-          width="1920"
-          height="1080"
-          alt="Maharani couture — model in maroon bridal lehenga framed by palace arches"
-          fetchpriority="high"
-          decoding="async"
-          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&amp;q=90'"
-        />
-        <div class="hero-layer hero-layer--wash" aria-hidden="true"></div>
-        <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="hero-vignette" aria-hidden="true"></div>
-        <div class="hero-grain" aria-hidden="true"></div>
-        <div class="hero-fade-bottom" aria-hidden="true"></div>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="index.html" class="brand-link">
+          <span class="brand-text">MAHARANI</span>
+        </a>
       </div>
-      <div class="hero-inner">
-        <div class="hero-ornament hero-stagger font-accent" aria-hidden="true">✦</div>
-        <p class="hero-eyebrow hero-stagger font-body">Est. Rajasthan &middot; Heritage Couture</p>
-        <h1 class="hero-title luxury-heading hero-stagger">
-          <span class="hero-title__plain">Wear the Royal </span><span class="gold-gradient-text hero-title__heritage">Heritage</span><span class="hero-title__plain"> of Rajasthan</span>
-        </h1>
-        <p class="hero-sub font-body hero-stagger">Handcrafted couture steeped in centuries of Rajasthani artistry</p>
-        <div class="hero-ctas hero-stagger">
-          <a class="gold-shimmer-btn font-accent" href="#featured"><span class="gold-shimmer-btn__label">Explore Collections</span></a>
-          <a class="gold-outline-btn font-accent" href="#heritage">Our Heritage</a>
+
+      <div class="navbar-menu" id="navbar-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="pages/shop.html" class="nav-link">Shop</a>
+        <a href="pages/collections.html" class="nav-link">Collections</a>
+        <a href="pages/about.html" class="nav-link">About</a>
+        <a href="pages/editorial.html" class="nav-link">Editorial</a>
+        <a href="pages/contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="nav-icon search-btn" id="search-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+        <a href="pages/wishlist.html" class="nav-icon wishlist-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </a>
+        <a href="pages/cart.html" class="nav-icon cart-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="m1 1 4 4h15l-1 9H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="nav-icon menu-btn" id="menu-btn">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="pages/shop.html" class="mobile-nav-link">Shop</a>
+      <a href="pages/collections.html" class="mobile-nav-link">Collections</a>
+      <a href="pages/about.html" class="mobile-nav-link">About</a>
+      <a href="pages/editorial.html" class="mobile-nav-link">Editorial</a>
+      <a href="pages/contact.html" class="mobile-nav-link">Contact</a>
+      <div class="mobile-menu-footer">
+        <a href="pages/login.html" class="mobile-auth-link">Login</a>
+        <a href="pages/register.html" class="mobile-auth-link">Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-container">
+      <button class="search-close" id="search-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <input type="text" class="search-input" placeholder="Search luxury couture..." id="search-input">
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="assets/videos/hero-cinematic.mp4" type="video/mp4">
+          <!-- Fallback image if video doesn't load -->
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&q=90" alt="Luxury Rajasthani couture" class="hero-fallback">
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-line">Timeless</span>
+            <span class="hero-title-line">Heritage</span>
+            <span class="hero-title-line">Couture</span>
+          </h1>
+          <p class="hero-subtitle">Experience the artistry of Rajasthani craftsmanship through cinematic luxury fashion</p>
+          <div class="hero-ctas">
+            <a href="pages/shop.html" class="cta-primary">
+              <span class="cta-text">Explore Collections</span>
+              <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17l10-10"></path>
+                <path d="M7 7h10v10"></path>
+              </svg>
+            </a>
+            <a href="pages/editorial.html" class="cta-secondary">
+              <span class="cta-text">Our Story</span>
+            </a>
+          </div>
         </div>
       </div>
-      <a class="hero-scroll" href="#collections" aria-label="Scroll to collections">
-        <span class="hero-scroll__label font-accent">Scroll</span>
-        <span class="hero-scroll__line" aria-hidden="true"></span>
-      </a>
-    </section>
 
-    <section id="collections" class="section collections royal-section">
-      <div class="royal-section__glow" aria-hidden="true"></div>
-      <div class="section-head section-head--court section-reveal" data-reveal>
-        <span class="section-kicker font-accent gold-text">Curated for Royalty</span>
-        <h2 class="section-title luxury-heading">Our Collections</h2>
-        <span class="gold-divider" aria-hidden="true"></span>
-      </div>
-      <div class="collection-grid">
-        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="collection-card-media">
-            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=900&q=85" alt="Emerald bridal lehenga with gold embroidery" loading="lazy" />
-          </div>
-          <div class="collection-card-overlay">
-            <h3 class="font-accent">The Emerald Maharani</h3>
-            <p class="font-body">Bridal Lehengas</p>
-          </div>
-        </article>
-        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="collection-card-media">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=900&q=88" alt="Crimson and gold bridal lehenga with intricate embroidery" loading="lazy" />
-          </div>
-          <div class="collection-card-overlay">
-            <h3 class="font-accent">Crimson Heritage</h3>
-            <p class="font-body">Royal Sarees</p>
-          </div>
-        </article>
-        <article class="collection-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="collection-card-media">
-            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=900&q=85" alt="Ivory and gold wedding couture" loading="lazy" />
-          </div>
-          <div class="collection-card-overlay">
-            <h3 class="font-accent">Ivory &amp; Gold</h3>
-            <p class="font-body">Wedding Couture</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="featured" class="section featured royal-section">
-      <div class="royal-section__glow" aria-hidden="true"></div>
-      <div class="section-head section-head--court section-reveal" data-reveal>
-        <span class="section-kicker font-accent gold-text">Handpicked Treasures</span>
-        <h2 class="section-title luxury-heading">Featured Pieces</h2>
-        <span class="gold-divider" aria-hidden="true"></span>
-      </div>
-      <div class="product-grid">
-        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="product-card-media">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=85" alt="Royal lehenga in deep red zardozi" loading="lazy" />
-          </div>
-          <div class="product-card-body">
-            <h3 class="font-accent">Royal Lehenga</h3>
-            <p class="product-meta font-body">Velvet zardozi &middot; twenty-two karat thread</p>
-            <p class="product-price font-accent">₹1,85,000</p>
-            <a class="product-link font-accent" href="product-lehenga.html">View Details</a>
-          </div>
-        </article>
-        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="product-card-media">
-            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=88" alt="Royal saree drape with traditional jewelry" loading="lazy" />
-          </div>
-          <div class="product-card-body">
-            <h3 class="font-accent">Heritage Saree</h3>
-            <p class="product-meta font-body">Handloom Banarasi &middot; tissue pallu</p>
-            <p class="product-price font-accent">₹95,000</p>
-            <a class="product-link font-accent" href="product-saree.html">View Details</a>
-          </div>
-        </article>
-        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="product-card-media">
-            <img src="https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=88" alt="Heritage couture with ornate Indian jewelry" loading="lazy" />
-          </div>
-          <div class="product-card-body">
-            <h3 class="font-accent">Rani Haar Dupatta</h3>
-            <p class="product-meta font-body">Organza &middot; pearl and gold border</p>
-            <p class="product-price font-accent">₹1,45,000</p>
-            <a class="product-link font-accent" href="product-dupatta.html">View Details</a>
-          </div>
-        </article>
-        <article class="product-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="product-card-media">
-            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=88" alt="Ivory and gold wedding couture ensemble" loading="lazy" />
-          </div>
-          <div class="product-card-body">
-            <h3 class="font-accent">Suryagarh Ensemble</h3>
-            <p class="product-meta font-body">Gajji silk bandhani &middot; couture fit</p>
-            <p class="product-price font-accent">₹2,20,000</p>
-            <a class="product-link font-accent" href="product-ensemble.html">View Details</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="heritage" class="artisan royal-atelier">
-      <div class="artisan-pattern" aria-hidden="true"></div>
-      <div class="artisan-veil" aria-hidden="true"></div>
-      <div class="artisan-inner">
-        <div class="artisan-visual section-reveal hover-zoom" data-reveal>
-          <div class="artisan-frame gold-border-card">
-            <img src="https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=1000&q=85" alt="Master artisan hands embroidering fabric with gold thread" loading="lazy" />
-          </div>
+      <div class="hero-scroll">
+        <div class="scroll-indicator">
+          <span class="scroll-text">Scroll to discover</span>
+          <div class="scroll-line"></div>
         </div>
-        <div class="artisan-copy artisan-copy--court section-reveal" data-reveal>
-          <span class="section-kicker font-accent gold-text">The Atelier</span>
-          <h2 class="artisan-title luxury-heading">The Art Behind the Thread</h2>
-          <p class="artisan-text font-body">For seven generations, our house has worked in the shadow of Udaipur and Jaipur palaces—where jali light falls across silks and every motif carries a name from the court.</p>
-          <p class="artisan-text font-body">Each piece is bench-made: traced, couched, and finished by artisans who apprenticed under their mothers and grandmothers. This is not seasonal fashion. It is architecture you wear—measured in months, not minutes.</p>
-          <div class="artisan-stats">
-            <div class="artisan-stat">
-              <p class="artisan-stat__value font-accent gold-text">200+</p>
-              <p class="artisan-stat__label font-body">Master Artisans</p>
-            </div>
-            <div class="artisan-stat">
-              <p class="artisan-stat__value font-accent gold-text">7</p>
-              <p class="artisan-stat__label font-body">Generations of Craft</p>
+      </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="featured-collections">
+      <div class="section-header">
+        <h2 class="section-title">Featured Collections</h2>
+        <p class="section-subtitle">Curated masterpieces for the discerning collector</p>
+      </div>
+
+      <div class="collections-grid">
+        <article class="collection-card reveal" data-reveal>
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=90" alt="Emerald bridal lehenga collection" loading="lazy">
+            <div class="collection-overlay">
+              <h3 class="collection-title">Emerald Heritage</h3>
+              <p class="collection-desc">Bridal lehengas in precious emerald tones</p>
+              <a href="pages/collections.html#bridal" class="collection-link">Explore Collection</a>
             </div>
           </div>
-          <a class="gold-outline-btn gold-outline-btn--inline font-accent" href="#contact">Visit Our Atelier</a>
+        </article>
+
+        <article class="collection-card reveal" data-reveal>
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90" alt="Royal red zardozi collection" loading="lazy">
+            <div class="collection-overlay">
+              <h3 class="collection-title">Royal Zardozi</h3>
+              <p class="collection-desc">Intricate gold thread embroidery</p>
+              <a href="pages/collections.html#zardozi" class="collection-link">Explore Collection</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="collection-card reveal" data-reveal>
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=90" alt="Ivory wedding couture" loading="lazy">
+            <div class="collection-overlay">
+              <h3 class="collection-title">Ivory Elegance</h3>
+              <p class="collection-desc">Timeless ivory wedding ensembles</p>
+              <a href="pages/collections.html#wedding" class="collection-link">Explore Collection</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+      <div class="section-header">
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-subtitle">The latest masterpieces from our ateliers</p>
+      </div>
+
+      <div class="products-grid">
+        <article class="product-card reveal" data-reveal>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=90" alt="Royal lehenga in deep red" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Royal Lehenga</h3>
+            <p class="product-meta">Velvet zardozi · 22k gold thread</p>
+            <p class="product-price">₹1,85,000</p>
+            <a href="pages/product-detail.html?id=lehenga" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-reveal>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=90" alt="Heritage saree drape" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Heritage Saree</h3>
+            <p class="product-meta">Handloom Banarasi · tissue pallu</p>
+            <p class="product-price">₹95,000</p>
+            <a href="pages/product-detail.html?id=saree" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-reveal>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=600&q=90" alt="Rani haar dupatta" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Rani Haar Dupatta</h3>
+            <p class="product-meta">Organza · pearl and gold border</p>
+            <p class="product-price">₹1,45,000</p>
+            <a href="pages/product-detail.html?id=dupatta" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-reveal>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&q=90" alt="Suryagarh ensemble" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Suryagarh Ensemble</h3>
+            <p class="product-meta">Gajji silk bandhani · couture fit</p>
+            <p class="product-price">₹2,20,000</p>
+            <a href="pages/product-detail.html?id=ensemble" class="product-link">View Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="view-all-container">
+        <a href="pages/shop.html" class="view-all-btn">
+          <span class="btn-text">View All Collections</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17l10-10"></path>
+            <path d="M7 7h10v10"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="brand-story">
+      <div class="story-container">
+        <div class="story-content reveal" data-reveal>
+          <h2 class="story-title">A Legacy of<br>Luxury Craftsmanship</h2>
+          <p class="story-text">For generations, Maharani has preserved the ancient art of Rajasthani embroidery, where each stitch tells a story of heritage and tradition. Our master artisans continue this legacy, creating pieces that transcend time.</p>
+          <a href="pages/about.html" class="story-link">
+            <span class="link-text">Discover Our Heritage</span>
+            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17l10-10"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="story-image reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=90" alt="Artisan craftsmanship" loading="lazy">
         </div>
       </div>
     </section>
 
-    <section id="new-arrivals" class="section new-arrivals royal-section">
-      <div class="royal-section__glow" aria-hidden="true"></div>
-      <div class="section-head section-head--court section-reveal" data-reveal>
-        <span class="section-kicker font-accent gold-text">Just Arrived</span>
-        <h2 class="section-title luxury-heading">New Arrivals</h2>
-        <span class="gold-divider" aria-hidden="true"></span>
+    <!-- Category Showcase -->
+    <section class="category-showcase">
+      <div class="category-banner reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1600&q=90" alt="Bridal collection showcase" loading="lazy">
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h3 class="banner-title">Bridal Couture</h3>
+            <p class="banner-desc">Timeless ensembles for your special day</p>
+            <a href="pages/collections.html#bridal" class="banner-link">Explore Bridal</a>
+          </div>
+        </div>
       </div>
-      <div class="new-arrivals-track new-arrivals-track--royal">
-        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="arrival-card-media">
-            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=700&q=85" alt="Emerald evening lehenga" loading="lazy" />
+
+      <div class="category-banner reveal" data-reveal>
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1600&q=90" alt="Traditional wear showcase" loading="lazy">
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h3 class="banner-title">Traditional Wear</h3>
+            <p class="banner-desc">Celebrate heritage with elegance</p>
+            <a href="pages/collections.html#traditional" class="banner-link">Explore Traditional</a>
           </div>
-          <div class="arrival-card-body">
-            <h3 class="font-accent">Mehrangarh Emerald</h3>
-            <p class="font-body">₹3,25,000</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Luxury Features -->
+    <section class="luxury-features">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose MAHARANI</h2>
+        <p class="section-subtitle">Uncompromising luxury in every detail</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 4v8l6 3.6"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Handcrafted Excellence</h3>
+          <p class="feature-desc">Every piece is handcrafted by master artisans with 30+ years of experience in traditional embroidery techniques</p>
+        </div>
+
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Heritage Materials</h3>
+          <p class="feature-desc">Premium silk, velvet, and authentic 22-karat gold thread sourced directly from Rajasthan's finest suppliers</p>
+        </div>
+
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M19 12h-2m-2 0h-2m-2 0H9m-2 0H5"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Luxury Packaging</h3>
+          <p class="feature-desc">Each couture piece arrives in bespoke packaging with preservation guides and lifetime care support</p>
+        </div>
+
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/><path d="M12 4v4m0 8v4"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Personalization</h3>
+          <p class="feature-desc">Customize your couture with bespoke sizing, color variations, and exclusive monogramming services</p>
+        </div>
+
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Quality Guarantee</h3>
+          <p class="feature-desc">100% satisfaction guarantee with lifetime authenticity certificate and white-glove delivery service</p>
+        </div>
+
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Exclusive Access</h3>
+          <p class="feature-desc">VIP members get early access to limited collections, private styling sessions, and invitation-only events</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials">
+      <div class="testimonials-bg" aria-hidden="true"></div>
+      <div class="section-header">
+        <h2 class="section-title">Treasured by Connoisseurs</h2>
+        <p class="section-subtitle">Experiences from our distinguished collectors</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <article class="testimonial-card reveal" data-reveal>
+          <div class="testimonial-stars">
+            ★★★★★
+          </div>
+          <p class="testimonial-text">"Wearing my MAHARANI lehenga was like stepping into a dream. The craftsmanship is absolutely exquisite, and every stitch feels like a work of art. I received countless compliments at my wedding."</p>
+          <div class="testimonial-author">
+            <div class="author-name">Priya Saxena</div>
+            <div class="author-meta">Bride, Delhi</div>
           </div>
         </article>
-        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="arrival-card-media">
-            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=85" alt="Ivory couture saree" loading="lazy" />
+
+        <article class="testimonial-card reveal" data-reveal>
+          <div class="testimonial-stars">
+            ★★★★★
           </div>
-          <div class="arrival-card-body">
-            <h3 class="font-accent">Lake Palace Ivory</h3>
-            <p class="font-body">₹1,10,000</p>
-          </div>
-        </article>
-        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="arrival-card-media">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700&q=85" alt="Ruby bridal skirt" loading="lazy" />
-          </div>
-          <div class="arrival-card-body">
-            <h3 class="font-accent">Jaipur Ruby Skirt</h3>
-            <p class="font-body">₹2,85,000</p>
+          <p class="testimonial-text">"The attention to detail is unmatched. From the moment I selected my piece to the impeccable packaging, every aspect screamed luxury. MAHARANI is not just clothing; it's a legacy."</p>
+          <div class="testimonial-author">
+            <div class="author-name">Anjali Kapoor</div>
+            <div class="author-meta">Collector, Mumbai</div>
           </div>
         </article>
-        <article class="arrival-card gold-border-card section-reveal hover-zoom" data-reveal>
-          <div class="arrival-card-media">
-            <img src="https://images.unsplash.com/photo-1583391733981-8c5f06f6f5d1?w=700&q=88" alt="Heritage bandhani and silk textiles" loading="lazy" />
+
+        <article class="testimonial-card reveal" data-reveal>
+          <div class="testimonial-stars">
+            ★★★★★
           </div>
-          <div class="arrival-card-body">
-            <h3 class="font-accent">Desert Rose Saree</h3>
-            <p class="font-body">₹88,000</p>
+          <p class="testimonial-text">"I've owned MAHARANI pieces for years, and they only get more beautiful with time. The quality of materials and artistry is something you can pass down through generations."</p>
+          <div class="testimonial-author">
+            <div class="author-name">Neha Sharma</div>
+            <div class="author-meta">Heritage Enthusiast, Udaipur</div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="cta-luxury royal-cta">
-      <div class="cta-luxury__jali" aria-hidden="true"></div>
-      <div class="cta-luxury__gold-veil" aria-hidden="true"></div>
-      <div class="cta-luxury__inner cta-luxury__inner--court section-reveal" data-reveal>
-        <p class="cta-luxury__eyebrow font-accent gold-text">Private Appointments</p>
-        <h2 class="cta-luxury__title luxury-heading">An Evening in the Palace Boutique</h2>
-        <p class="cta-luxury__sub font-body">Reserve an unhurried session with our head couturier. Champagne, archival swatches, and silhouettes composed for your celebration.</p>
-        <a class="gold-shimmer-btn font-accent" href="#"><span class="gold-shimmer-btn__label">Book Your Viewing</span></a>
+    <!-- Premium Membership -->
+    <section class="premium-membership">
+      <div class="membership-bg" aria-hidden="true"></div>
+      <div class="membership-container">
+        <div class="membership-header reveal" data-reveal>
+          <h2 class="membership-title">The Maharani Collective</h2>
+          <p class="membership-subtitle">An exclusive circle of luxury connoisseurs</p>
+          <p class="membership-desc">Join our VIP community and unlock extraordinary privileges</p>
+        </div>
+
+        <div class="membership-benefits reveal" data-reveal>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Early Access</h4>
+            <p>First access to limited collections before public release</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Personal Styling</h4>
+            <p>Complimentary styling sessions with luxury consultants</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Exclusive Events</h4>
+            <p>Invitations to private shows and heritage exhibitions</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Premium Support</h4>
+            <p>Dedicated concierge available 24/7 for assistance</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Special Pricing</h4>
+            <p>Exclusive discounts and private sale access</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✦</span>
+            <h4>Legacy Program</h4>
+            <p>Lifetime authentication and restoration services</p>
+          </div>
+        </div>
+
+        <a href="pages/register.html" class="membership-cta">
+          <span class="cta-text">Join The Collective</span>
+          <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17l10-10"></path>
+            <path d="M7 7h10v10"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Social Gallery -->
+    <section class="social-gallery">
+      <div class="section-header">
+        <h2 class="section-title">#MAHARANI</h2>
+        <p class="section-subtitle">Join our community of luxury collectors</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&q=90" alt="Social media post 1" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=90" alt="Social media post 2" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=90" alt="Social media post 3" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=400&q=90" alt="Social media post 4" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&q=90" alt="Social media post 5" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal>
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=90" alt="Social media post 6" loading="lazy">
+          <div class="gallery-overlay">
+            <a href="#" class="gallery-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-cta">
+        <a href="#" class="social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>Follow @maharani</span>
+        </a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer royal-footer">
-    <div class="footer-pattern" aria-hidden="true"></div>
-    <div class="footer-crest" aria-hidden="true">✦</div>
-    <div class="footer-inner">
-      <div class="footer-col section-reveal" data-reveal>
-        <p class="footer-logo gold-gradient-text font-display">Maharani</p>
-        <p class="footer-tagline font-body">Est. Rajasthan &middot; Heritage Couture</p>
-        <p class="footer-text font-body">Royal Rajasthani heritage couture for collectors who dress once—and pass down forever.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">MAHARANI</a>
+        <p class="footer-tagline">Luxury Rajasthani Heritage Couture</p>
+        <p class="footer-desc">Timeless craftsmanship for the discerning collector</p>
       </div>
-      <div class="footer-col section-reveal" data-reveal>
-        <h3 class="footer-heading font-accent">Collections</h3>
-        <ul class="footer-links font-body">
-          <li><a href="#collections">Bridal Lehengas</a></li>
-          <li><a href="#collections">Royal Sarees</a></li>
-          <li><a href="#featured">Wedding Couture</a></li>
-          <li><a href="#new-arrivals">New Arrivals</a></li>
-        </ul>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4 class="footer-title">Collections</h4>
+          <a href="pages/collections.html#bridal">Bridal Couture</a>
+          <a href="pages/collections.html#traditional">Traditional Wear</a>
+          <a href="pages/collections.html#zardozi">Zardozi Collection</a>
+          <a href="pages/collections.html#wedding">Wedding Ensembles</a>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">Company</h4>
+          <a href="pages/about.html">About Us</a>
+          <a href="pages/editorial.html">Editorial</a>
+          <a href="pages/contact.html">Contact</a>
+          <a href="#">Careers</a>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">Customer Care</h4>
+          <a href="#">Size Guide</a>
+          <a href="#">Shipping & Returns</a>
+          <a href="#">Care Instructions</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">Connect</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+          <div class="newsletter">
+            <p class="newsletter-text">Stay updated with our latest collections</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="newsletter-input">
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-col section-reveal" data-reveal>
-        <h3 class="footer-heading font-accent">House of Maharani</h3>
-        <ul class="footer-links font-body">
-          <li><a href="#heritage">Our Story</a></li>
-          <li><a href="#heritage">The Atelier</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>&copy; 2024 Maharani. All rights reserved.</p>
+        </div>
+        <div class="footer-locations">
+          <span>Jaipur</span>
+          <span>·</span>
+          <span>Udaipur</span>
+          <span>·</span>
+          <span>Mumbai</span>
+          <span>·</span>
+          <span>Delhi</span>
+        </div>
       </div>
-      <div class="footer-col section-reveal" data-reveal>
-        <h3 class="footer-heading font-accent">Client Care</h3>
-        <ul class="footer-links font-body">
-          <li><a href="#">White-Glove Shipping</a></li>
-          <li><a href="#">Alterations</a></li>
-          <li><a href="#contact">Contact Concierge</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-    </div>
-    <span class="gold-divider gold-divider--footer" aria-hidden="true"></span>
-    <div class="footer-bar font-accent">
-      <span>&copy; Maharani Atelier</span>
-      <span class="footer-bar__cities">Jaipur &middot; Udaipur &middot; Mumbai &middot; Delhi</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
 </body>
-</html>

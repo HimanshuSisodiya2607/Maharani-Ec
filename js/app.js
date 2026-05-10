@@ -47,7 +47,7 @@ function initNavigation() {
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY > 100) {
+    if (currentScrollY > 30) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -235,42 +235,52 @@ function initSmoothScroll() {
 
 // ===== PARALLAX EFFECTS =====
 function initParallax() {
-  // Hero parallax effect
   const heroSection = document.querySelector('.hero-section');
   const heroVideo = document.querySelector('.hero-video');
-  const heroFallback = document.querySelector('.hero-fallback');
+  const heroFallback = document.querySelector('.hero-fallback img');
+  const heroPanel = document.querySelector('.hero-panel');
+  const parallaxElements = document.querySelectorAll('.collection-image img, .product-image img, .story-image img, .category-banner img, .gallery-item img');
 
-  if (heroSection && (heroVideo || heroFallback)) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5;
+  let latestScroll = window.pageYOffset;
+  let ticking = false;
 
-      if (heroVideo) {
-        heroVideo.style.transform = `translateY(${rate}px)`;
-      }
-      if (heroFallback) {
-        heroFallback.style.transform = `translateY(${rate}px)`;
-      }
-    });
-  }
+  const updateParallax = () => {
+    const scrolled = latestScroll;
 
-  // Subtle parallax for collection images
-  const parallaxElements = document.querySelectorAll('.collection-image img, .product-image img');
+    if (heroVideo) {
+      heroVideo.style.transform = `translateY(${scrolled * 0.12}px) scale(1.05)`;
+    }
+    if (heroFallback) {
+      heroFallback.style.transform = `translateY(${scrolled * 0.12}px) scale(1.05)`;
+    }
+    if (heroPanel) {
+      heroPanel.style.transform = `translateY(${scrolled * 0.02}px)`;
+    }
 
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-
-    parallaxElements.forEach((element, index) => {
+    parallaxElements.forEach((element) => {
       const rect = element.getBoundingClientRect();
       const elementTop = rect.top + scrolled;
       const elementHeight = rect.height;
 
       if (scrolled + window.innerHeight > elementTop && scrolled < elementTop + elementHeight) {
-        const rate = (scrolled - elementTop) * 0.1;
+        const rate = (scrolled - elementTop) * 0.08;
         element.style.transform = `translateY(${rate}px) scale(1.05)`;
       }
     });
-  });
+
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    latestScroll = window.pageYOffset;
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', onScroll);
+  updateParallax();
 }
 
 // ===== UTILITY FUNCTIONS =====

@@ -100,56 +100,67 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
       <div class="hero-video-container">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&q=90">
           <source src="assets/videos/hero-cinematic.mp4" type="video/mp4">
-          <!-- Fallback image if video doesn't load -->
-          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&q=90" alt="Luxury Rajasthani couture" class="hero-fallback">
         </video>
+        <div class="hero-fallback">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=2400&q=90" alt="Luxury Rajasthani couture" loading="eager">
+        </div>
         <div class="hero-overlay"></div>
+        <div class="hero-spotlight"></div>
       </div>
 
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="hero-title-line">Timeless</span>
-            <span class="hero-title-line">Heritage</span>
-            <span class="hero-title-line">Couture</span>
-          </h1>
-          <p class="hero-subtitle">Experience the artistry of Rajasthani craftsmanship through cinematic luxury fashion</p>
-          <div class="hero-ctas">
+      <div class="hero-panel">
+        <div class="hero-copy" data-reveal>
+          <span class="hero-eyebrow">Limited atelier edit</span>
+          <h1 class="hero-headline">Wear the <span class="hero-highlight">Royal Heritage</span><br>of Rajasthani Couture</h1>
+          <p class="hero-description">A cinematic couture story shaped in hand-embroidered velvet, silk and gold thread — designed for the most discerning collector.</p>
+          <div class="hero-actions">
             <a href="pages/shop.html" class="cta-primary">
-              <span class="cta-text">Explore Collections</span>
+              Explore the Atelier
               <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M7 17l10-10"></path>
                 <path d="M7 7h10v10"></path>
               </svg>
             </a>
-            <a href="pages/editorial.html" class="cta-secondary">
-              <span class="cta-text">Our Story</span>
-            </a>
+            <a href="pages/editorial.html" class="cta-secondary">Read the Story</a>
           </div>
         </div>
+
+        <aside class="hero-meta" data-reveal>
+          <div class="hero-meta-card">
+            <span class="meta-label">Edition</span>
+            <span class="meta-value">No. 001</span>
+          </div>
+          <div class="hero-meta-card">
+            <span class="meta-label">Crafted in</span>
+            <span class="meta-value">Jaipur Atelier</span>
+          </div>
+          <div class="hero-meta-card">
+            <span class="meta-label">Artisans</span>
+            <span class="meta-value">23 Master Embroiderers</span>
+          </div>
+        </aside>
       </div>
 
-      <div class="hero-scroll">
-        <div class="scroll-indicator">
-          <span class="scroll-text">Scroll to discover</span>
-          <div class="scroll-line"></div>
-        </div>
-      </div>
+      <a href="#featured" class="hero-scroll">
+        <span class="scroll-text">Scroll to reveal</span>
+        <span class="scroll-line"></span>
+      </a>
     </section>
 
     <!-- Featured Collections -->
     <section class="featured-collections">
       <div class="section-header">
+        <span class="section-kicker">Curated for royalty</span>
         <h2 class="section-title">Featured Collections</h2>
-        <p class="section-subtitle">Curated masterpieces for the discerning collector</p>
+        <p class="section-subtitle">Masterpieces sculpted for the discerning collector.</p>
       </div>
 
       <div class="collections-grid">
-        <article class="collection-card reveal" data-reveal>
+        <article class="collection-card collection-large reveal" data-reveal>
           <div class="collection-image">
             <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=90" alt="Emerald bridal lehenga collection" loading="lazy">
             <div class="collection-overlay">
@@ -160,7 +171,7 @@
           </div>
         </article>
 
-        <article class="collection-card reveal" data-reveal>
+        <article class="collection-card collection-medium reveal" data-reveal>
           <div class="collection-image">
             <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90" alt="Royal red zardozi collection" loading="lazy">
             <div class="collection-overlay">
@@ -171,7 +182,7 @@
           </div>
         </article>
 
-        <article class="collection-card reveal" data-reveal>
+        <article class="collection-card collection-medium reveal" data-reveal>
           <div class="collection-image">
             <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=90" alt="Ivory wedding couture" loading="lazy">
             <div class="collection-overlay">
@@ -187,8 +198,12 @@
     <!-- New Arrivals -->
     <section class="new-arrivals">
       <div class="section-header">
+        <span class="section-kicker">Seasonal Atelier Drop</span>
         <h2 class="section-title">New Arrivals</h2>
         <p class="section-subtitle">The latest masterpieces from our ateliers</p>
+      </div>
+      <div class="arrivals-intro">
+        <p>Every silhouette is designed as a wearable heirloom — crafted to command presence, shimmer in candlelight and feel effortless from celebration to ceremony.</p>
       </div>
 
       <div class="products-grid">
@@ -662,3 +677,4 @@
   <!-- Scripts -->
   <script src="js/app.js"></script>
 </body>
+</html>

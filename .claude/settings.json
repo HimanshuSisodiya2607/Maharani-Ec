@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -n '265,280p' /Users/himanshu/Desktop/ec/styles.css)",
+      "Bash(sed -n '605,615p' /Users/himanshu/Desktop/ec/styles.css)",
+      "Bash(sed -n '660,670p' /Users/himanshu/Desktop/ec/styles.css)",
+      "Bash(sed -n '1048,1060p' /Users/himanshu/Desktop/ec/styles.css)",
+      "Bash(sed -n '1379,1400p' /Users/himanshu/Desktop/ec/styles.css)",
+      "Bash(sed -n '1480,1500p' /Users/himanshu/Desktop/ec/styles.css)"
+    ]
+  }
+}

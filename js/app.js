@@ -1,8 +1,3 @@
-/**
- * MAHARANI — Luxury Rajasthani Heritage Couture
- * Single application file for all pages
- */
-
 // ===== PRODUCT DATABASE =====
 const PRODUCTS = [
   {
@@ -166,135 +161,25 @@ class WishlistManager {
   }
 }
 
-// ===== SHARED LINKS (computed from data-root on body) =====
+// ===== LINKS (resolved from data-root on body) =====
 let LINKS = {};
 
 function computeLinks() {
-  const root   = document.body.dataset.root || '';   // '' for index.html, '../' for pages/
-  const prefix = root === '../' ? '' : 'pages/';     // how to reach pages/ from here
+  const root = document.body.dataset.root || '';
+  const prefix = root === '../' ? '' : 'pages/';
   LINKS = {
     home:          root + 'index.html',
     shop:          prefix + 'shop.html',
-    collections:   prefix + 'collections.html',
-    about:         prefix + 'about.html',
-    contact:       prefix + 'contact.html',
-    cart:          prefix + 'cart.html',
-    wishlist:      prefix + 'wishlist.html',
     productDetail: prefix + 'product-detail.html',
   };
 }
 
-// ===== SHARED UI — nav + footer injected once =====
-function buildSharedUI() {
-  computeLinks();
-  const page = document.body.dataset.page || '';
-  const a = p => page === p ? ' active' : '';
-
-  const ICON_SEARCH   = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`;
-  const ICON_HEART    = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-  const ICON_CART     = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="m1 1 4 4h15l-1 9H6"/></svg>`;
-  const ICON_CLOSE    = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-
-  const navEl = document.getElementById('nav-placeholder');
-  if (navEl) navEl.innerHTML = `
-    <nav class="navbar" id="navbar">
-      <div class="navbar-container">
-        <div class="navbar-brand">
-          <a href="${LINKS.home}" class="brand-link"><span class="brand-text">MAHARANI</span></a>
-        </div>
-        <div class="navbar-menu" id="navbar-menu">
-          <a href="${LINKS.home}" class="nav-link${a('home')}">Home</a>
-          <a href="${LINKS.shop}" class="nav-link${a('shop')}">Shop</a>
-          <a href="${LINKS.collections}" class="nav-link${a('collections')}">Collections</a>
-          <a href="${LINKS.about}" class="nav-link${a('about')}">About</a>
-          <a href="${LINKS.contact}" class="nav-link${a('contact')}">Contact</a>
-        </div>
-        <div class="navbar-actions">
-          <button class="nav-icon search-btn" id="search-btn" aria-label="Search">${ICON_SEARCH}</button>
-          <a href="${LINKS.wishlist}" class="nav-icon" aria-label="Wishlist">${ICON_HEART}</a>
-          <a href="${LINKS.cart}" class="nav-icon cart-btn" aria-label="Cart">
-            ${ICON_CART}<span class="cart-count" style="display:none">0</span>
-          </a>
-          <button class="nav-icon menu-btn" id="menu-btn" aria-label="Menu">
-            <span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>
-          </button>
-        </div>
-      </div>
-    </nav>
-    <div class="mobile-menu" id="mobile-menu">
-      <div class="mobile-menu-content">
-        <a href="${LINKS.home}" class="mobile-nav-link${a('home')}">Home</a>
-        <a href="${LINKS.shop}" class="mobile-nav-link${a('shop')}">Shop</a>
-        <a href="${LINKS.collections}" class="mobile-nav-link${a('collections')}">Collections</a>
-        <a href="${LINKS.about}" class="mobile-nav-link${a('about')}">About</a>
-        <a href="${LINKS.contact}" class="mobile-nav-link${a('contact')}">Contact</a>
-      </div>
-    </div>
-    <div class="search-overlay" id="search-overlay">
-      <div class="search-container">
-        <button class="search-close" id="search-close" aria-label="Close">${ICON_CLOSE}</button>
-        <input type="text" class="search-input" placeholder="Search luxury couture..." id="search-input">
-        <div class="search-results" id="search-results"></div>
-      </div>
-    </div>`;
-
-  const footerEl = document.getElementById('footer-placeholder');
-  if (footerEl) footerEl.innerHTML = `
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <a href="${LINKS.home}" class="footer-logo">MAHARANI</a>
-          <p class="footer-tagline">Luxury Rajasthani Heritage Couture</p>
-          <p class="footer-desc">Timeless craftsmanship for the discerning collector</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Collections</h4>
-            <a href="${LINKS.collections}#bridal">Bridal Couture</a>
-            <a href="${LINKS.collections}#traditional">Traditional Wear</a>
-            <a href="${LINKS.collections}#zardozi">Zardozi</a>
-            <a href="${LINKS.shop}">New Arrivals</a>
-          </div>
-          <div class="footer-column">
-            <h4>Company</h4>
-            <a href="${LINKS.about}">About Us</a>
-            <a href="${LINKS.contact}">Contact</a>
-          </div>
-          <div class="footer-column">
-            <h4>Customer Care</h4>
-            <a href="#">Size Guide</a>
-            <a href="#">Shipping &amp; Returns</a>
-            <a href="#">Care Instructions</a>
-            <a href="#">FAQ</a>
-          </div>
-          <div class="footer-column">
-            <h4>Newsletter</h4>
-            <p class="newsletter-text">Stay updated with our latest collections</p>
-            <div class="newsletter-form">
-              <input type="email" placeholder="Your email" class="newsletter-input">
-              <button type="submit" class="newsletter-btn">Join</button>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <div class="footer-copyright"><p>&copy; 2026 Maharani. All rights reserved.</p></div>
-          <div class="footer-locations">
-            <span>Jaipur</span><span>·</span><span>Udaipur</span><span>·</span><span>Mumbai</span><span>·</span><span>Delhi</span>
-          </div>
-        </div>
-      </div>
-    </footer>`;
-}
-
-// Global instances
-let cart, wishlist;
-
-// ===== SHARED NAV / UI =====
+// ===== NAV =====
 function initNav() {
-  const navbar  = document.querySelector('.navbar');
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const searchBtn = document.getElementById('search-btn');
+  const navbar      = document.querySelector('.navbar');
+  const menuBtn     = document.getElementById('menu-btn');
+  const mobileMenu  = document.getElementById('mobile-menu');
+  const searchBtn   = document.getElementById('search-btn');
   const searchOverlay = document.getElementById('search-overlay');
   const searchClose = document.getElementById('search-close');
 
@@ -328,7 +213,7 @@ function initNav() {
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) { closeMenu(); closeSearch(); }
-  });
+  }, { passive: true });
 
   function closeMenu() {
     mobileMenu?.classList.remove('active');
@@ -340,8 +225,7 @@ function initNav() {
     document.body.style.overflow = '';
   }
 
-  // Live search
-  const searchInput = document.getElementById('search-input');
+  const searchInput   = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   if (searchInput && searchResults) {
     let t;
@@ -383,7 +267,27 @@ function initSmoothScroll() {
   });
 }
 
-// ===== PRODUCT CARD HTML =====
+// ===== SHOP PAGE =====
+function initShopPage() {
+  const grid = document.getElementById('shop-grid');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!grid) return;
+
+  bindWishlistBtns(grid);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const active = btn.dataset.filter;
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (active === 'all' || card.dataset.category === active) ? '' : 'none';
+      });
+    });
+  });
+}
+
+// ===== PRODUCT DETAIL PAGE =====
 function productCardHTML(product) {
   const wishlisted = wishlist.has(product.id);
   return `
@@ -408,27 +312,6 @@ function productCardHTML(product) {
     </article>`;
 }
 
-// ===== SHOP PAGE =====
-function initShopPage() {
-  const grid = document.getElementById('shop-grid');
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  if (!grid) return;
-
-  bindWishlistBtns(grid);
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const active = btn.dataset.filter;
-      grid.querySelectorAll('.product-card').forEach(card => {
-        card.style.display = (active === 'all' || card.dataset.category === active) ? '' : 'none';
-      });
-    });
-  });
-}
-
-// ===== PRODUCT DETAIL PAGE =====
 function initProductDetailPage() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -491,18 +374,15 @@ function initProductDetailPage() {
       </div>
     </div>`;
 
-  // Gallery thumbnail switching
   const mainImg = document.getElementById('main-img');
   container.querySelectorAll('.product-thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {
       container.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
-      const idx = parseInt(thumb.dataset.index);
-      mainImg.src = product.images[idx];
+      mainImg.src = product.images[parseInt(thumb.dataset.index)];
     });
   });
 
-  // Size selection
   let selectedSize = product.sizes[0];
   container.querySelectorAll('.size-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -512,33 +392,28 @@ function initProductDetailPage() {
     });
   });
 
-  // Add to cart
   document.getElementById('add-to-cart-btn').addEventListener('click', () => {
     cart.add(product, selectedSize);
     showToast(`${product.name} added to cart`);
   });
 
-  // Wishlist toggle
   document.getElementById('detail-wish-btn').addEventListener('click', function () {
     const inWish = wishlist.toggle(product);
     this.classList.toggle('wishlisted', inWish);
-    const svg = this.querySelector('svg');
-    svg.setAttribute('fill', inWish ? 'currentColor' : 'none');
+    this.querySelector('svg').setAttribute('fill', inWish ? 'currentColor' : 'none');
     showToast(inWish ? 'Added to wishlist' : 'Removed from wishlist');
   });
 
-  // Related products
   const relatedGrid = document.getElementById('related-grid');
   if (relatedGrid) {
-    const related = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
-    relatedGrid.innerHTML = related.map(p => productCardHTML(p)).join('');
+    relatedGrid.innerHTML = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3).map(p => productCardHTML(p)).join('');
     bindWishlistBtns(relatedGrid);
   }
 }
 
 // ===== CART PAGE =====
 function initCartPage() {
-  const itemsEl = document.getElementById('cart-items');
+  const itemsEl   = document.getElementById('cart-items');
   const summaryEl = document.getElementById('cart-summary');
   if (!itemsEl) return;
 
@@ -584,13 +459,11 @@ function initCartPage() {
       summaryEl.querySelector('#summary-total').textContent = subtotal;
     }
 
-    // Bind qty & remove buttons
     itemsEl.querySelectorAll('.qty-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const key = btn.dataset.key;
-        const item = cart.cart.find(i => i.key === key);
+        const item = cart.cart.find(i => i.key === btn.dataset.key);
         if (!item) return;
-        cart.updateQty(key, item.qty + (btn.dataset.action === 'inc' ? 1 : -1));
+        cart.updateQty(btn.dataset.key, item.qty + (btn.dataset.action === 'inc' ? 1 : -1));
         render();
       });
     });
@@ -648,17 +521,14 @@ function initWishlistPage() {
     });
 
     grid.querySelectorAll('.btn-remove-wish').forEach(btn => {
-      btn.addEventListener('click', () => {
-        wishlist.remove(btn.dataset.id);
-        render();
-      });
+      btn.addEventListener('click', () => { wishlist.remove(btn.dataset.id); render(); });
     });
   }
 
   render();
 }
 
-// ===== WISHLIST BUTTONS (cards) =====
+// ===== WISHLIST BUTTONS ON PRODUCT CARDS =====
 function bindWishlistBtns(root) {
   root.querySelectorAll('.wishlist-btn').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -667,25 +537,19 @@ function bindWishlistBtns(root) {
       if (!product) return;
       const inWish = wishlist.toggle(product);
       btn.classList.toggle('wishlisted', inWish);
-      const svg = btn.querySelector('svg');
-      svg.setAttribute('fill', inWish ? 'currentColor' : 'none');
+      btn.querySelector('svg').setAttribute('fill', inWish ? 'currentColor' : 'none');
       showToast(inWish ? 'Added to wishlist' : 'Removed from wishlist');
     });
   });
 }
 
-// ===== TOAST NOTIFICATION =====
+// ===== TOAST =====
 function showToast(msg) {
   let toast = document.getElementById('maharani-toast');
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'maharani-toast';
-    toast.style.cssText = `
-      position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
-      background:#1a1208;color:#fff;padding:0.85rem 1.75rem;border-radius:999px;
-      font-family:var(--font-primary);font-size:0.85rem;letter-spacing:0.05em;
-      opacity:0;transition:all 0.3s ease;z-index:9999;white-space:nowrap;
-      border:1px solid rgba(212,175,55,0.3);`;
+    toast.style.cssText = `position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1208;color:#fff;padding:0.85rem 1.75rem;border-radius:999px;font-family:var(--font-primary);font-size:0.85rem;letter-spacing:0.05em;opacity:0;transition:all 0.3s ease;z-index:9999;white-space:nowrap;border:1px solid rgba(212,175,55,0.3);`;
     document.body.appendChild(toast);
   }
   toast.textContent = msg;
@@ -700,11 +564,9 @@ function showToast(msg) {
 
 // ===== HOME PAGE =====
 function initHomePage() {
-  // Bind wishlist buttons on home page product cards
   bindWishlistBtns(document);
 
-  // Parallax on hero
-  const heroVideo = document.querySelector('.hero-video');
+  const heroVideo    = document.querySelector('.hero-video');
   const heroFallback = document.querySelector('.hero-fallback img');
   let ticking = false;
 
@@ -712,7 +574,7 @@ function initHomePage() {
     if (!ticking) {
       requestAnimationFrame(() => {
         const y = window.pageYOffset;
-        if (heroVideo) heroVideo.style.transform = `translateY(${y * 0.1}px) scale(1.05)`;
+        if (heroVideo)    heroVideo.style.transform    = `translateY(${y * 0.1}px) scale(1.05)`;
         if (heroFallback) heroFallback.style.transform = `translateY(${y * 0.1}px) scale(1.05)`;
         ticking = false;
       });
@@ -733,9 +595,10 @@ function initContactPage() {
 }
 
 // ===== BOOTSTRAP =====
-document.addEventListener('DOMContentLoaded', () => {
-  buildSharedUI();   // inject nav + footer first so the DOM exists
+let cart, wishlist;
 
+document.addEventListener('DOMContentLoaded', () => {
+  computeLinks();
   cart     = new CartManager();
   wishlist = new WishlistManager();
 
@@ -744,7 +607,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initLoading();
 
-  // Detect current page and init accordingly
   const page = document.body.dataset.page;
   if (page === 'shop')           initShopPage();
   if (page === 'product-detail') initProductDetailPage();
@@ -753,8 +615,3 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'home')           initHomePage();
   if (page === 'contact')        initContactPage();
 });
-
-// Badge on product cards needs CSS — add inline if missing
-const badgeStyle = document.createElement('style');
-badgeStyle.textContent = `.product-badge{position:absolute;top:.9rem;left:.9rem;background:var(--color-gold);color:#000;font-family:var(--font-primary);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;padding:.25rem .65rem;border-radius:999px;z-index:2;}.wishlist-btn.wishlisted{background:var(--color-gold);color:#000;}`;
-document.head.appendChild(badgeStyle);

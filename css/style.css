@@ -108,6 +108,7 @@ body {
   letter-spacing: 0.2em;
   margin-bottom: var(--spacing-xl);
   animation: pulse 2s infinite;
+  color: #1a1208;
 }
 
 .loading-bar {
@@ -1474,7 +1475,7 @@ body {
 }
 
 .hero-highlight {
-  color: var(--color-gold);
+  color: #9B7A1B;
 }
 
 .hero-description {
@@ -3624,4 +3625,23 @@ body {
   .collection-feature {
     height: 45vh;
   }
+}
+.product-badge {
+  position: absolute;
+  top: .9rem;
+  left: .9rem;
+  background: var(--color-gold);
+  color: #000;
+  font-family: var(--font-primary);
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: .25rem .65rem;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.wishlist-btn.wishlisted {
+  background: var(--color-gold);
+  color: #000;
 }

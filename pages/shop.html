@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — MAHARANI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="shop" data-root="../">
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="../index.html" class="brand-link"><span class="brand-text">MAHARANI</span></a>
+      </div>
+      <div class="navbar-menu" id="navbar-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="nav-icon search-btn" id="search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="wishlist.html" class="nav-icon" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <a href="cart.html" class="nav-icon cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="m1 1 4 4h15l-1 9H6"/></svg>
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+        <button class="nav-icon menu-btn" id="menu-btn" aria-label="Menu">
+          <span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="../index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link active">Shop</a>
+      <a href="collections.html" class="mobile-nav-link">Collections</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+  </div>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-container">
+      <button class="search-close" id="search-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <input type="text" class="search-input" placeholder="Search luxury couture..." id="search-input">
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <span class="page-banner-kicker">The Atelier</span>
+      <h1 class="page-banner-title">Shop All Collections</h1>
+      <p class="page-banner-subtitle">Handcrafted masterpieces from the royal ateliers of Jaipur</p>
+    </div>
+    <section class="shop-section">
+      <div class="shop-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="lehenga">Lehenga</button>
+        <button class="filter-btn" data-filter="saree">Saree</button>
+        <button class="filter-btn" data-filter="dupatta">Dupatta</button>
+        <button class="filter-btn" data-filter="ensemble">Ensemble</button>
+      </div>
+
+      <div class="shop-grid" id="shop-grid">
+
+        <article class="product-card" data-id="lehenga" data-category="lehenga">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90" alt="Royal Lehenga" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn" data-id="lehenga" aria-label="Add to wishlist">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="product-badge">Bestseller</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Royal Lehenga</h3>
+            <p class="product-meta">Velvet zardozi · 22k gold thread</p>
+            <p class="product-price">₹1,85,000</p>
+            <a href="product-detail.html?id=lehenga" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card" data-id="saree" data-category="saree">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=90" alt="Heritage Saree" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn" data-id="saree" aria-label="Add to wishlist">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="product-badge">New Arrival</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Heritage Saree</h3>
+            <p class="product-meta">Handloom Banarasi · tissue pallu</p>
+            <p class="product-price">₹95,000</p>
+            <a href="product-detail.html?id=saree" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card" data-id="dupatta" data-category="dupatta">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=90" alt="Rani Haar Dupatta" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn" data-id="dupatta" aria-label="Add to wishlist">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Rani Haar Dupatta</h3>
+            <p class="product-meta">Organza · pearl and gold border</p>
+            <p class="product-price">₹1,45,000</p>
+            <a href="product-detail.html?id=dupatta" class="product-link">View Details</a>
+          </div>
+        </article>
+
+        <article class="product-card" data-id="ensemble" data-category="ensemble">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=90" alt="Suryagarh Ensemble" loading="lazy">
+            <div class="product-overlay">
+              <button class="wishlist-btn" data-id="ensemble" aria-label="Add to wishlist">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="product-badge">Limited Edition</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Suryagarh Ensemble</h3>
+            <p class="product-meta">Gajji silk bandhani · couture fit</p>
+            <p class="product-price">₹2,20,000</p>
+            <a href="product-detail.html?id=ensemble" class="product-link">View Details</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo">MAHARANI</a>
+        <p class="footer-tagline">Luxury Rajasthani Heritage Couture</p>
+        <p class="footer-desc">Timeless craftsmanship for the discerning collector</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Collections</h4>
+          <a href="collections.html#bridal">Bridal Couture</a>
+          <a href="collections.html#traditional">Traditional Wear</a>
+          <a href="collections.html#zardozi">Zardozi</a>
+          <a href="shop.html">New Arrivals</a>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Customer Care</h4>
+          <a href="#">Size Guide</a>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Care Instructions</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <h4>Newsletter</h4>
+          <p class="newsletter-text">Stay updated with our latest collections</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright"><p>&copy; 2026 Maharani. All rights reserved.</p></div>
+        <div class="footer-locations">
+          <span>Jaipur</span><span>·</span><span>Udaipur</span><span>·</span><span>Mumbai</span><span>·</span><span>Delhi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,619 +1,760 @@
 /**
- * MAHARANI - Luxury Rajasthani Heritage Couture
- * Main JavaScript Application
+ * MAHARANI — Luxury Rajasthani Heritage Couture
+ * Single application file for all pages
  */
 
-// ===== DOM CONTENT LOADED =====
-document.addEventListener('DOMContentLoaded', function() {
-  init();
-});
+// ===== PRODUCT DATABASE =====
+const PRODUCTS = [
+  {
+    id: 'lehenga',
+    name: 'Royal Lehenga',
+    meta: 'Velvet zardozi · 22k gold thread',
+    price: 185000,
+    priceFormatted: '₹1,85,000',
+    category: 'lehenga',
+    badge: 'Bestseller',
+    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90',
+    images: [
+      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90',
+      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=90',
+      'https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=90',
+    ],
+    description: 'This exquisite lehenga is a masterpiece of Rajasthani craftsmanship, featuring intricate zardozi embroidery with 22k gold threads. The deep red velvet base symbolizes prosperity and passion, perfect for royal weddings. Handcrafted by master artisans with centuries of tradition.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+  },
+  {
+    id: 'saree',
+    name: 'Heritage Saree',
+    meta: 'Handloom Banarasi · tissue pallu',
+    price: 95000,
+    priceFormatted: '₹95,000',
+    category: 'saree',
+    badge: 'New Arrival',
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=90',
+    images: [
+      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&q=90',
+      'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&q=90',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=90',
+    ],
+    description: 'A heritage masterpiece woven on handlooms in Varanasi, this Banarasi saree features a luxurious tissue pallu adorned with traditional motifs. Each thread tells a story of centuries-old weaving tradition, making this piece a true heirloom.',
+    sizes: ['Free Size'],
+  },
+  {
+    id: 'dupatta',
+    name: 'Rani Haar Dupatta',
+    meta: 'Organza · pearl and gold border',
+    price: 145000,
+    priceFormatted: '₹1,45,000',
+    category: 'dupatta',
+    badge: null,
+    image: 'https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=90',
+    images: [
+      'https://images.unsplash.com/photo-1620890461431-e981e90d6af6?w=800&q=90',
+      'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&q=90',
+      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=90',
+    ],
+    description: 'The Rani Haar Dupatta is a statement piece of unparalleled elegance. Crafted from the finest organza silk, it features an intricate hand-stitched border of seed pearls and 22k gold thread. A versatile piece that completes any royal ensemble.',
+    sizes: ['Free Size'],
+  },
+  {
+    id: 'ensemble',
+    name: 'Suryagarh Ensemble',
+    meta: 'Gajji silk bandhani · couture fit',
+    price: 220000,
+    priceFormatted: '₹2,20,000',
+    category: 'ensemble',
+    badge: 'Limited Edition',
+    image: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=90',
+    images: [
+      'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800&q=90',
+      'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=90',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=90',
+    ],
+    description: 'The Suryagarh Ensemble embodies the spirit of the Thar desert at golden hour. Crafted from the finest Gajji silk with traditional bandhani tie-dye technique, this piece is a celebration of Rajasthani artistry. The couture fit ensures a silhouette that flatters every form.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+  },
+];
 
-function init() {
-  // Initialize all components
-  initLoading();
-  initNavigation();
-  initScrollReveal();
-  initSearch();
-  initSmoothScroll();
-  initParallax();
+// ===== CART MANAGER =====
+class CartManager {
+  constructor() {
+    this.cart = this._load();
+    this._syncBadge();
+  }
 
-  // Hide loading after initialization
-  setTimeout(() => {
-    const loading = document.getElementById('loading');
-    if (loading) {
-      loading.classList.add('hidden');
+  _load() {
+    try { return JSON.parse(localStorage.getItem('maharani-cart')) || []; }
+    catch { return []; }
+  }
+
+  _save() {
+    localStorage.setItem('maharani-cart', JSON.stringify(this.cart));
+    this._syncBadge();
+  }
+
+  _syncBadge() {
+    const el = document.querySelector('.cart-count');
+    if (!el) return;
+    const count = this.cart.reduce((s, i) => s + i.qty, 0);
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+  }
+
+  add(product, size, qty = 1) {
+    const key = `${product.id}__${size}`;
+    const existing = this.cart.find(i => i.key === key);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      this.cart.push({ key, id: product.id, name: product.name, meta: product.meta, size, priceFormatted: product.priceFormatted, price: product.price, image: product.image, qty });
     }
-  }, 3500);
+    this._save();
+  }
+
+  remove(key) {
+    this.cart = this.cart.filter(i => i.key !== key);
+    this._save();
+  }
+
+  updateQty(key, qty) {
+    const item = this.cart.find(i => i.key === key);
+    if (!item) return;
+    if (qty <= 0) { this.remove(key); return; }
+    item.qty = qty;
+    this._save();
+  }
+
+  total() {
+    return this.cart.reduce((s, i) => s + i.price * i.qty, 0);
+  }
+
+  totalFormatted() {
+    return '₹' + this.total().toLocaleString('en-IN');
+  }
 }
 
-// ===== LOADING ANIMATION =====
-function initLoading() {
-  // Loading animation is handled by CSS
-  // This function can be extended for additional loading logic
+// ===== WISHLIST MANAGER =====
+class WishlistManager {
+  constructor() {
+    this.list = this._load();
+  }
+
+  _load() {
+    try { return JSON.parse(localStorage.getItem('maharani-wishlist')) || []; }
+    catch { return []; }
+  }
+
+  _save() {
+    localStorage.setItem('maharani-wishlist', JSON.stringify(this.list));
+  }
+
+  has(id) { return this.list.some(i => i.id === id); }
+
+  toggle(product) {
+    if (this.has(product.id)) {
+      this.list = this.list.filter(i => i.id !== product.id);
+    } else {
+      this.list.push({ id: product.id, name: product.name, meta: product.meta, priceFormatted: product.priceFormatted, price: product.price, image: product.image });
+    }
+    this._save();
+    return this.has(product.id);
+  }
+
+  remove(id) {
+    this.list = this.list.filter(i => i.id !== id);
+    this._save();
+  }
 }
 
-// ===== NAVIGATION =====
-function initNavigation() {
-  const navbar = document.querySelector('.navbar');
+// ===== SHARED LINKS (computed from data-root on body) =====
+let LINKS = {};
+
+function computeLinks() {
+  const root   = document.body.dataset.root || '';   // '' for index.html, '../' for pages/
+  const prefix = root === '../' ? '' : 'pages/';     // how to reach pages/ from here
+  LINKS = {
+    home:          root + 'index.html',
+    shop:          prefix + 'shop.html',
+    collections:   prefix + 'collections.html',
+    about:         prefix + 'about.html',
+    contact:       prefix + 'contact.html',
+    cart:          prefix + 'cart.html',
+    wishlist:      prefix + 'wishlist.html',
+    productDetail: prefix + 'product-detail.html',
+  };
+}
+
+// ===== SHARED UI — nav + footer injected once =====
+function buildSharedUI() {
+  computeLinks();
+  const page = document.body.dataset.page || '';
+  const a = p => page === p ? ' active' : '';
+
+  const ICON_SEARCH   = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`;
+  const ICON_HEART    = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  const ICON_CART     = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="m1 1 4 4h15l-1 9H6"/></svg>`;
+  const ICON_CLOSE    = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+  const navEl = document.getElementById('nav-placeholder');
+  if (navEl) navEl.innerHTML = `
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <a href="${LINKS.home}" class="brand-link"><span class="brand-text">MAHARANI</span></a>
+        </div>
+        <div class="navbar-menu" id="navbar-menu">
+          <a href="${LINKS.home}" class="nav-link${a('home')}">Home</a>
+          <a href="${LINKS.shop}" class="nav-link${a('shop')}">Shop</a>
+          <a href="${LINKS.collections}" class="nav-link${a('collections')}">Collections</a>
+          <a href="${LINKS.about}" class="nav-link${a('about')}">About</a>
+          <a href="${LINKS.contact}" class="nav-link${a('contact')}">Contact</a>
+        </div>
+        <div class="navbar-actions">
+          <button class="nav-icon search-btn" id="search-btn" aria-label="Search">${ICON_SEARCH}</button>
+          <a href="${LINKS.wishlist}" class="nav-icon" aria-label="Wishlist">${ICON_HEART}</a>
+          <a href="${LINKS.cart}" class="nav-icon cart-btn" aria-label="Cart">
+            ${ICON_CART}<span class="cart-count" style="display:none">0</span>
+          </a>
+          <button class="nav-icon menu-btn" id="menu-btn" aria-label="Menu">
+            <span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-content">
+        <a href="${LINKS.home}" class="mobile-nav-link${a('home')}">Home</a>
+        <a href="${LINKS.shop}" class="mobile-nav-link${a('shop')}">Shop</a>
+        <a href="${LINKS.collections}" class="mobile-nav-link${a('collections')}">Collections</a>
+        <a href="${LINKS.about}" class="mobile-nav-link${a('about')}">About</a>
+        <a href="${LINKS.contact}" class="mobile-nav-link${a('contact')}">Contact</a>
+      </div>
+    </div>
+    <div class="search-overlay" id="search-overlay">
+      <div class="search-container">
+        <button class="search-close" id="search-close" aria-label="Close">${ICON_CLOSE}</button>
+        <input type="text" class="search-input" placeholder="Search luxury couture..." id="search-input">
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>`;
+
+  const footerEl = document.getElementById('footer-placeholder');
+  if (footerEl) footerEl.innerHTML = `
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <a href="${LINKS.home}" class="footer-logo">MAHARANI</a>
+          <p class="footer-tagline">Luxury Rajasthani Heritage Couture</p>
+          <p class="footer-desc">Timeless craftsmanship for the discerning collector</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Collections</h4>
+            <a href="${LINKS.collections}#bridal">Bridal Couture</a>
+            <a href="${LINKS.collections}#traditional">Traditional Wear</a>
+            <a href="${LINKS.collections}#zardozi">Zardozi</a>
+            <a href="${LINKS.shop}">New Arrivals</a>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="${LINKS.about}">About Us</a>
+            <a href="${LINKS.contact}">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h4>Customer Care</h4>
+            <a href="#">Size Guide</a>
+            <a href="#">Shipping &amp; Returns</a>
+            <a href="#">Care Instructions</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div class="footer-column">
+            <h4>Newsletter</h4>
+            <p class="newsletter-text">Stay updated with our latest collections</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email" class="newsletter-input">
+              <button type="submit" class="newsletter-btn">Join</button>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copyright"><p>&copy; 2026 Maharani. All rights reserved.</p></div>
+          <div class="footer-locations">
+            <span>Jaipur</span><span>·</span><span>Udaipur</span><span>·</span><span>Mumbai</span><span>·</span><span>Delhi</span>
+          </div>
+        </div>
+      </div>
+    </footer>`;
+}
+
+// Global instances
+let cart, wishlist;
+
+// ===== SHARED NAV / UI =====
+function initNav() {
+  const navbar  = document.querySelector('.navbar');
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const searchBtn = document.getElementById('search-btn');
   const searchOverlay = document.getElementById('search-overlay');
   const searchClose = document.getElementById('search-close');
 
-  // Navbar scroll effect
-  let lastScrollY = window.scrollY;
-
   window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
+    navbar && navbar.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
 
-    if (currentScrollY > 30) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-
-    lastScrollY = currentScrollY;
-  });
-
-  // Mobile menu toggle
   if (menuBtn && mobileMenu) {
     menuBtn.addEventListener('click', () => {
-      const isActive = mobileMenu.classList.contains('active');
-      menuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = isActive ? 'auto' : 'hidden';
+      const open = mobileMenu.classList.toggle('active');
+      menuBtn.classList.toggle('active', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
-
-    // Close mobile menu when clicking outside
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
+    mobileMenu.addEventListener('click', e => {
+      if (e.target === mobileMenu) closeMenu();
     });
   }
 
-  // Search overlay
   if (searchBtn && searchOverlay) {
     searchBtn.addEventListener('click', () => {
       searchOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
-
-      // Focus search input
-      const searchInput = document.getElementById('search-input');
-      if (searchInput) {
-        setTimeout(() => searchInput.focus(), 300);
-      }
+      setTimeout(() => document.getElementById('search-input')?.focus(), 280);
     });
-
-    if (searchClose) {
-      searchClose.addEventListener('click', () => {
-        searchOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-        searchOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    });
+    searchClose?.addEventListener('click', closeSearch);
   }
 
-  // Close overlays on resize
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeMenu(); closeSearch(); }
+  });
+
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      if (mobileMenu) mobileMenu.classList.remove('active');
-      if (menuBtn) menuBtn.classList.remove('active');
-      if (searchOverlay) searchOverlay.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-  });
-}
-
-// ===== SCROLL REVEAL =====
-function initScrollReveal() {
-  const revealElements = document.querySelectorAll('[data-reveal]');
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    if (window.innerWidth > 768) { closeMenu(); closeSearch(); }
   });
 
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-}
+  function closeMenu() {
+    mobileMenu?.classList.remove('active');
+    menuBtn?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeSearch() {
+    searchOverlay?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-// ===== SEARCH FUNCTIONALITY =====
-function initSearch() {
+  // Live search
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
-
-  if (!searchInput || !searchResults) return;
-
-  let searchTimeout;
-
-  searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    const query = e.target.value.trim().toLowerCase();
-
-    if (query.length < 2) {
-      searchResults.innerHTML = '';
-      return;
-    }
-
-    searchTimeout = setTimeout(() => {
-      performSearch(query);
-    }, 300);
-  });
-
-  function performSearch(query) {
-    // Mock search results - in a real app, this would call an API
-    const mockResults = [
-      { title: 'Royal Lehenga', type: 'Product', url: 'pages/product-detail.html?id=lehenga' },
-      { title: 'Bridal Collection', type: 'Collection', url: 'pages/collections.html#bridal' },
-      { title: 'Zardozi Collection', type: 'Collection', url: 'pages/collections.html#zardozi' },
-      { title: 'Heritage Saree', type: 'Product', url: 'pages/product-detail.html?id=saree' },
-    ].filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      item.type.toLowerCase().includes(query)
-    );
-
-    displaySearchResults(mockResults);
-  }
-
-  function displaySearchResults(results) {
-    if (results.length === 0) {
-      searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
-      return;
-    }
-
-    const resultsHTML = results.map(result => `
-      <a href="${result.url}" class="search-result-item">
-        <div class="search-result-title">${result.title}</div>
-        <div class="search-result-type">${result.type}</div>
-      </a>
-    `).join('');
-
-    searchResults.innerHTML = resultsHTML;
+  if (searchInput && searchResults) {
+    let t;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(t);
+      const q = searchInput.value.trim().toLowerCase();
+      if (q.length < 2) { searchResults.innerHTML = ''; return; }
+      t = setTimeout(() => {
+        const hits = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || p.category.includes(q));
+        searchResults.innerHTML = hits.length
+          ? hits.map(p => `<a href="${LINKS.productDetail}?id=${p.id}" class="search-result-item"><div class="search-result-title">${p.name}</div><div class="search-result-type">${p.priceFormatted}</div></a>`).join('')
+          : '<div class="search-no-results">No results found</div>';
+      }, 280);
+    });
   }
 }
 
-// ===== SMOOTH SCROLL =====
+function initScrollReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+}
+
+function initLoading() {
+  const overlay = document.getElementById('loading');
+  if (!overlay) return;
+  setTimeout(() => overlay.classList.add('hidden'), 2800);
+}
+
 function initSmoothScroll() {
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
       e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+    });
+  });
+}
 
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const headerOffset = 100;
-        const elementPosition = target.offsetTop;
-        const offsetPosition = elementPosition - headerOffset;
+// ===== PRODUCT CARD HTML =====
+function productCardHTML(product) {
+  const wishlisted = wishlist.has(product.id);
+  return `
+    <article class="product-card" data-id="${product.id}">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <div class="product-overlay">
+          <button class="wishlist-btn${wishlisted ? ' wishlisted' : ''}" data-id="${product.id}" aria-label="Add to wishlist">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="${wishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${product.name}</h3>
+        <p class="product-meta">${product.meta}</p>
+        <p class="product-price">${product.priceFormatted}</p>
+        <a href="${LINKS.productDetail}?id=${product.id}" class="product-link">View Details</a>
+      </div>
+    </article>`;
+}
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+// ===== SHOP PAGE =====
+function initShopPage() {
+  const grid = document.getElementById('shop-grid');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!grid) return;
+
+  bindWishlistBtns(grid);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const active = btn.dataset.filter;
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (active === 'all' || card.dataset.category === active) ? '' : 'none';
+      });
+    });
+  });
+}
+
+// ===== PRODUCT DETAIL PAGE =====
+function initProductDetailPage() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const product = PRODUCTS.find(p => p.id === id);
+  const container = document.getElementById('product-detail-root');
+  if (!container) return;
+
+  if (!product) {
+    container.innerHTML = '<p style="text-align:center;padding:4rem;font-family:var(--font-primary);color:var(--color-gray);">Product not found. <a href="shop.html" style="color:var(--color-gold);">Back to Shop</a></p>';
+    return;
+  }
+
+  document.title = `${product.name} — MAHARANI`;
+
+  const wishlisted = wishlist.has(product.id);
+  const sizeBtns = product.sizes.map((s, i) =>
+    `<button class="size-btn${i === 0 ? ' active' : ''}" data-size="${s}">${s}</button>`
+  ).join('');
+
+  const thumbs = product.images.map((img, i) =>
+    `<div class="product-thumb${i === 0 ? ' active' : ''}" data-index="${i}"><img src="${img.replace('w=800', 'w=200')}" alt="${product.name} view ${i + 1}" loading="lazy"></div>`
+  ).join('');
+
+  container.innerHTML = `
+    <div class="product-detail-container">
+      <div class="product-gallery-wrap">
+        <div class="product-gallery-main" id="main-img-wrap">
+          <img id="main-img" src="${product.images[0]}" alt="${product.name}">
+        </div>
+        <div class="product-thumbs">${thumbs}</div>
+      </div>
+      <div class="product-detail-info">
+        <nav class="product-breadcrumb">
+          <a href="${LINKS.home}">Home</a><span>/</span>
+          <a href="${LINKS.shop}">Shop</a><span>/</span>
+          <span>${product.name}</span>
+        </nav>
+        ${product.badge ? `<span class="product-detail-badge">${product.badge}</span>` : ''}
+        <h1 class="product-detail-name">${product.name}</h1>
+        <p class="product-detail-meta">${product.meta}</p>
+        <p class="product-detail-price">${product.priceFormatted}</p>
+        <div class="product-detail-divider"></div>
+        <p class="product-detail-desc">${product.description}</p>
+        <label class="size-label">Select Size</label>
+        <div class="size-options" id="size-options">${sizeBtns}</div>
+        <div class="product-detail-actions">
+          <button class="btn-add-cart" id="add-to-cart-btn">Add to Cart</button>
+          <button class="btn-wishlist-detail${wishlisted ? ' wishlisted' : ''}" id="detail-wish-btn" aria-label="Add to wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="${wishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-detail-perks">
+          <span class="perk-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Free white-glove delivery</span>
+          <span class="perk-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Lifetime authenticity cert.</span>
+          <span class="perk-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Custom fit available</span>
+          <span class="perk-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> 30-day easy returns</span>
+        </div>
+      </div>
+    </div>`;
+
+  // Gallery thumbnail switching
+  const mainImg = document.getElementById('main-img');
+  container.querySelectorAll('.product-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      container.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const idx = parseInt(thumb.dataset.index);
+      mainImg.src = product.images[idx];
     });
   });
 
-  // Smooth scroll for hero scroll indicator
-  const scrollIndicator = document.querySelector('.scroll-indicator');
-  if (scrollIndicator) {
-    scrollIndicator.addEventListener('click', () => {
-      const nextSection = document.querySelector('.featured-collections');
-      if (nextSection) {
-        const headerOffset = 100;
-        const elementPosition = nextSection.offsetTop;
-        const offsetPosition = elementPosition - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+  // Size selection
+  let selectedSize = product.sizes[0];
+  container.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = btn.dataset.size;
     });
+  });
+
+  // Add to cart
+  document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+    cart.add(product, selectedSize);
+    showToast(`${product.name} added to cart`);
+  });
+
+  // Wishlist toggle
+  document.getElementById('detail-wish-btn').addEventListener('click', function () {
+    const inWish = wishlist.toggle(product);
+    this.classList.toggle('wishlisted', inWish);
+    const svg = this.querySelector('svg');
+    svg.setAttribute('fill', inWish ? 'currentColor' : 'none');
+    showToast(inWish ? 'Added to wishlist' : 'Removed from wishlist');
+  });
+
+  // Related products
+  const relatedGrid = document.getElementById('related-grid');
+  if (relatedGrid) {
+    const related = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
+    relatedGrid.innerHTML = related.map(p => productCardHTML(p)).join('');
+    bindWishlistBtns(relatedGrid);
   }
 }
 
-// ===== PARALLAX EFFECTS =====
-function initParallax() {
-  const heroSection = document.querySelector('.hero-section');
-  const heroVideo = document.querySelector('.hero-video');
-  const heroFallback = document.querySelector('.hero-fallback img');
-  const heroPanel = document.querySelector('.hero-panel');
-  const parallaxElements = document.querySelectorAll('.collection-image img, .product-image img, .story-image img, .category-banner img, .gallery-item img');
+// ===== CART PAGE =====
+function initCartPage() {
+  const itemsEl = document.getElementById('cart-items');
+  const summaryEl = document.getElementById('cart-summary');
+  if (!itemsEl) return;
 
-  let latestScroll = window.pageYOffset;
-  let ticking = false;
-
-  const updateParallax = () => {
-    const scrolled = latestScroll;
-
-    if (heroVideo) {
-      heroVideo.style.transform = `translateY(${scrolled * 0.12}px) scale(1.05)`;
-    }
-    if (heroFallback) {
-      heroFallback.style.transform = `translateY(${scrolled * 0.12}px) scale(1.05)`;
-    }
-    if (heroPanel) {
-      heroPanel.style.transform = `translateY(${scrolled * 0.02}px)`;
+  function render() {
+    if (cart.cart.length === 0) {
+      itemsEl.innerHTML = `
+        <div class="cart-empty-state">
+          <h2 class="cart-heading" style="margin-bottom:1rem;">Your cart is empty</h2>
+          <p>Discover our luxury couture collections</p>
+          <a href="${LINKS.shop}" class="continue-link">Browse Shop →</a>
+        </div>`;
+      if (summaryEl) summaryEl.style.display = 'none';
+      return;
     }
 
-    parallaxElements.forEach((element) => {
-      const rect = element.getBoundingClientRect();
-      const elementTop = rect.top + scrolled;
-      const elementHeight = rect.height;
+    if (summaryEl) summaryEl.style.display = '';
 
-      if (scrolled + window.innerHeight > elementTop && scrolled < elementTop + elementHeight) {
-        const rate = (scrolled - elementTop) * 0.08;
-        element.style.transform = `translateY(${rate}px) scale(1.05)`;
-      }
+    itemsEl.innerHTML = cart.cart.map(item => `
+      <div class="cart-item-row" data-key="${item.key}">
+        <div class="cart-item-img">
+          <img src="${item.image.replace('w=800', 'w=300')}" alt="${item.name}">
+        </div>
+        <div class="cart-item-details">
+          <h3 class="cart-item-name">${item.name}</h3>
+          <p class="cart-item-meta">${item.meta} · Size: ${item.size}</p>
+          <p class="cart-item-price">${item.priceFormatted}</p>
+          <div class="qty-control">
+            <button class="qty-btn" data-action="dec" data-key="${item.key}">−</button>
+            <span class="qty-value">${item.qty}</span>
+            <button class="qty-btn" data-action="inc" data-key="${item.key}">+</button>
+          </div>
+        </div>
+        <button class="remove-btn" data-key="${item.key}" aria-label="Remove">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>`).join('');
+
+    if (summaryEl) {
+      const subtotal = cart.totalFormatted();
+      summaryEl.querySelector('#summary-subtotal').textContent = subtotal;
+      summaryEl.querySelector('#summary-total').textContent = subtotal;
+    }
+
+    // Bind qty & remove buttons
+    itemsEl.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key;
+        const item = cart.cart.find(i => i.key === key);
+        if (!item) return;
+        cart.updateQty(key, item.qty + (btn.dataset.action === 'inc' ? 1 : -1));
+        render();
+      });
     });
 
-    ticking = false;
-  };
-
-  const onScroll = () => {
-    latestScroll = window.pageYOffset;
-    if (!ticking) {
-      window.requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  };
-
-  window.addEventListener('scroll', onScroll);
-  updateParallax();
-}
-
-// ===== UTILITY FUNCTIONS =====
-
-// Debounce function for performance optimization
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Throttle function for performance optimization
-function throttle(func, limit) {
-  let inThrottle;
-  return function() {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
+    itemsEl.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => { cart.remove(btn.dataset.key); render(); });
+    });
   }
+
+  render();
 }
 
-// ===== PERFORMANCE OPTIMIZATION =====
+// ===== WISHLIST PAGE =====
+function initWishlistPage() {
+  const grid = document.getElementById('wishlist-grid');
+  if (!grid) return;
 
-// Lazy load images
-function initLazyLoading() {
-  const images = document.querySelectorAll('img[loading="lazy"]');
+  function render() {
+    if (wishlist.list.length === 0) {
+      grid.innerHTML = `
+        <div class="wishlist-empty-state" style="grid-column:1/-1">
+          <h2 class="section-title" style="font-size:2rem;margin-bottom:1rem;">Your wishlist is empty</h2>
+          <p>Save pieces you love and come back to them later.</p>
+          <a href="${LINKS.shop}" class="continue-link" style="margin-top:1.5rem;display:inline-flex;">Browse Shop →</a>
+        </div>`;
+      return;
+    }
 
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src || img.src;
-          img.classList.remove('lazy');
-          imageObserver.unobserve(img);
+    grid.innerHTML = wishlist.list.map(item => `
+      <article class="product-card" data-id="${item.id}">
+        <div class="product-image">
+          <img src="${item.image}" alt="${item.name}" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">${item.name}</h3>
+          <p class="product-meta">${item.meta}</p>
+          <p class="product-price">${item.priceFormatted}</p>
+        </div>
+        <div class="wishlist-card-actions">
+          <button class="btn-move-cart" data-id="${item.id}">Move to Cart</button>
+          <button class="btn-remove-wish" data-id="${item.id}">Remove</button>
+        </div>
+      </article>`).join('');
+
+    grid.querySelectorAll('.btn-move-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const product = PRODUCTS.find(p => p.id === btn.dataset.id);
+        if (product) {
+          cart.add(product, product.sizes[0]);
+          wishlist.remove(btn.dataset.id);
+          showToast(`${product.name} moved to cart`);
+          render();
         }
       });
     });
 
-    images.forEach(img => imageObserver.observe(img));
-  } else {
-    // Fallback for browsers without IntersectionObserver
-    images.forEach(img => {
-      img.src = img.dataset.src || img.src;
+    grid.querySelectorAll('.btn-remove-wish').forEach(btn => {
+      btn.addEventListener('click', () => {
+        wishlist.remove(btn.dataset.id);
+        render();
+      });
     });
   }
+
+  render();
 }
 
-// ===== CART FUNCTIONALITY =====
-class CartManager {
-  constructor() {
-    this.cart = this.loadCart();
-    this.updateCartDisplay();
-  }
-
-  loadCart() {
-    const cart = localStorage.getItem('maharani-cart');
-    return cart ? JSON.parse(cart) : [];
-  }
-
-  saveCart() {
-    localStorage.setItem('maharani-cart', JSON.stringify(this.cart));
-    this.updateCartDisplay();
-  }
-
-  addItem(item) {
-    const existingItem = this.cart.find(cartItem => cartItem.id === item.id);
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      this.cart.push({ ...item, quantity: 1 });
-    }
-    this.saveCart();
-  }
-
-  removeItem(itemId) {
-    this.cart = this.cart.filter(item => item.id !== itemId);
-    this.saveCart();
-  }
-
-  updateQuantity(itemId, quantity) {
-    const item = this.cart.find(item => item.id === itemId);
-    if (item) {
-      item.quantity = Math.max(0, quantity);
-      if (item.quantity === 0) {
-        this.removeItem(itemId);
-      } else {
-        this.saveCart();
-      }
-    }
-  }
-
-  getTotal() {
-    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  }
-
-  getItemCount() {
-    return this.cart.reduce((count, item) => count + item.quantity, 0);
-  }
-
-  updateCartDisplay() {
-    const cartCount = document.querySelector('.cart-count');
-    if (cartCount) {
-      const count = this.getItemCount();
-      cartCount.textContent = count;
-      cartCount.style.display = count > 0 ? 'flex' : 'none';
-    }
-  }
-}
-
-// Initialize cart when DOM is ready
-let cartManager;
-document.addEventListener('DOMContentLoaded', () => {
-  cartManager = new CartManager();
-});
-
-// ===== WISHLIST FUNCTIONALITY =====
-class WishlistManager {
-  constructor() {
-    this.wishlist = this.loadWishlist();
-    this.updateWishlistDisplay();
-  }
-
-  loadWishlist() {
-    const wishlist = localStorage.getItem('maharani-wishlist');
-    return wishlist ? JSON.parse(wishlist) : [];
-  }
-
-  saveWishlist() {
-    localStorage.setItem('maharani-wishlist', JSON.stringify(this.wishlist));
-    this.updateWishlistDisplay();
-  }
-
-  addItem(item) {
-    if (!this.wishlist.find(wishlistItem => wishlistItem.id === item.id)) {
-      this.wishlist.push(item);
-      this.saveWishlist();
-    }
-  }
-
-  removeItem(itemId) {
-    this.wishlist = this.wishlist.filter(item => item.id !== itemId);
-    this.saveWishlist();
-  }
-
-  isInWishlist(itemId) {
-    return this.wishlist.some(item => item.id === itemId);
-  }
-
-  updateWishlistDisplay() {
-    // Update wishlist buttons
-    document.querySelectorAll('.wishlist-btn').forEach(btn => {
-      const itemId = btn.dataset.itemId;
-      if (itemId && this.isInWishlist(itemId)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-  }
-}
-
-// Initialize wishlist when DOM is ready
-let wishlistManager;
-document.addEventListener('DOMContentLoaded', () => {
-  wishlistManager = new WishlistManager();
-
-  // Add wishlist button event listeners
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.wishlist-btn')) {
+// ===== WISHLIST BUTTONS (cards) =====
+function bindWishlistBtns(root) {
+  root.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
       e.preventDefault();
-      const btn = e.target.closest('.wishlist-btn');
-      const itemId = btn.dataset.itemId;
-      const itemData = btn.dataset.item;
-
-      if (itemId) {
-        if (wishlistManager.isInWishlist(itemId)) {
-          wishlistManager.removeItem(itemId);
-        } else {
-          if (itemData) {
-            wishlistManager.addItem(JSON.parse(itemData));
-          }
-        }
-      }
-    }
+      const product = PRODUCTS.find(p => p.id === btn.dataset.id);
+      if (!product) return;
+      const inWish = wishlist.toggle(product);
+      btn.classList.toggle('wishlisted', inWish);
+      const svg = btn.querySelector('svg');
+      svg.setAttribute('fill', inWish ? 'currentColor' : 'none');
+      showToast(inWish ? 'Added to wishlist' : 'Removed from wishlist');
+    });
   });
-});
-
-// ===== ANALYTICS & TRACKING =====
-// Basic event tracking for user interactions
-function trackEvent(eventName, eventData = {}) {
-  // In a real application, this would send data to analytics service
-  console.log('Event tracked:', eventName, eventData);
-
-  // Example: Google Analytics
-  // if (typeof gtag !== 'undefined') {
-  //   gtag('event', eventName, eventData);
-  // }
 }
 
-// Track page views
+// ===== TOAST NOTIFICATION =====
+function showToast(msg) {
+  let toast = document.getElementById('maharani-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'maharani-toast';
+    toast.style.cssText = `
+      position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+      background:#1a1208;color:#fff;padding:0.85rem 1.75rem;border-radius:999px;
+      font-family:var(--font-primary);font-size:0.85rem;letter-spacing:0.05em;
+      opacity:0;transition:all 0.3s ease;z-index:9999;white-space:nowrap;
+      border:1px solid rgba(212,175,55,0.3);`;
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2600);
+}
+
+// ===== HOME PAGE =====
+function initHomePage() {
+  // Bind wishlist buttons on home page product cards
+  bindWishlistBtns(document);
+
+  // Parallax on hero
+  const heroVideo = document.querySelector('.hero-video');
+  const heroFallback = document.querySelector('.hero-fallback img');
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.pageYOffset;
+        if (heroVideo) heroVideo.style.transform = `translateY(${y * 0.1}px) scale(1.05)`;
+        if (heroFallback) heroFallback.style.transform = `translateY(${y * 0.1}px) scale(1.05)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+// ===== CONTACT PAGE =====
+function initContactPage() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    showToast('Message sent — our concierge will be in touch shortly.');
+    form.reset();
+  });
+}
+
+// ===== BOOTSTRAP =====
 document.addEventListener('DOMContentLoaded', () => {
-  trackEvent('page_view', {
-    page_title: document.title,
-    page_location: window.location.href
-  });
+  buildSharedUI();   // inject nav + footer first so the DOM exists
+
+  cart     = new CartManager();
+  wishlist = new WishlistManager();
+
+  initNav();
+  initScrollReveal();
+  initSmoothScroll();
+  initLoading();
+
+  // Detect current page and init accordingly
+  const page = document.body.dataset.page;
+  if (page === 'shop')           initShopPage();
+  if (page === 'product-detail') initProductDetailPage();
+  if (page === 'cart')           initCartPage();
+  if (page === 'wishlist')       initWishlistPage();
+  if (page === 'home')           initHomePage();
+  if (page === 'contact')        initContactPage();
 });
 
-// Track button clicks
-document.addEventListener('click', (e) => {
-  const target = e.target.closest('a, button');
-  if (target) {
-    const eventData = {
-      element_type: target.tagName.toLowerCase(),
-      element_text: target.textContent.trim(),
-      element_href: target.href || null
-    };
-
-    if (target.classList.contains('cta-primary')) {
-      trackEvent('cta_click', { ...eventData, cta_type: 'primary' });
-    } else if (target.classList.contains('cta-secondary')) {
-      trackEvent('cta_click', { ...eventData, cta_type: 'secondary' });
-    } else if (target.classList.contains('product-link')) {
-      trackEvent('product_click', eventData);
-    }
-  }
-});
-
-// ===== ERROR HANDLING =====
-window.addEventListener('error', (e) => {
-  console.error('JavaScript error:', e.error);
-  // In production, send error to logging service
-});
-
-window.addEventListener('unhandledrejection', (e) => {
-  console.error('Unhandled promise rejection:', e.reason);
-  // In production, send error to logging service
-});
-
-// ===== ACCESSIBILITY =====
-
-// Keyboard navigation for mobile menu
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    // Close any open overlays
-    const mobileMenu = document.getElementById('mobile-menu');
-    const searchOverlay = document.getElementById('search-overlay');
-
-    if (mobileMenu && mobileMenu.classList.contains('active')) {
-      document.getElementById('menu-btn').click();
-    }
-
-    if (searchOverlay && searchOverlay.classList.contains('active')) {
-      searchOverlay.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-  }
-});
-
-// Focus management
-function trapFocus(element) {
-  const focusableElements = element.querySelectorAll(
-    'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
-  );
-  const firstElement = focusableElements[0];
-  const lastElement = focusableElements[focusableElements.length - 1];
-
-  element.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
-          lastElement.focus();
-          e.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          firstElement.focus();
-          e.preventDefault();
-        }
-      }
-    }
-  });
-}
-
-// Apply focus trap to search overlay
-document.addEventListener('DOMContentLoaded', () => {
-  const searchOverlay = document.getElementById('search-overlay');
-  if (searchOverlay) {
-    trapFocus(searchOverlay);
-  }
-});
-
-// ===== PERFORMANCE MONITORING =====
-function initPerformanceMonitoring() {
-  // Monitor Core Web Vitals
-  if ('web-vitals' in window) {
-    // In a real app, import web-vitals library
-    // import {onCLS, onFID, onFCP, onLCP, onTTFB} from 'web-vitals';
-  }
-
-  // Monitor page load performance
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const perfData = performance.getEntriesByType('navigation')[0];
-      if (perfData) {
-        trackEvent('performance', {
-          load_time: perfData.loadEventEnd - perfData.loadEventStart,
-          dom_content_loaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart
-        });
-      }
-    }, 0);
-  });
-}
-
-// Initialize performance monitoring
-initPerformanceMonitoring();
-
-// ===== EXPORT FOR MODULE USAGE =====
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    CartManager,
-    WishlistManager,
-    init,
-    trackEvent
-  };
-}
+// Badge on product cards needs CSS — add inline if missing
+const badgeStyle = document.createElement('style');
+badgeStyle.textContent = `.product-badge{position:absolute;top:.9rem;left:.9rem;background:var(--color-gold);color:#000;font-family:var(--font-primary);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;padding:.25rem .65rem;border-radius:999px;z-index:2;}.wishlist-btn.wishlisted{background:var(--color-gold);color:#000;}`;
+document.head.appendChild(badgeStyle);

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — MAHARANI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="about" data-root="../">
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="../index.html" class="brand-link"><span class="brand-text">MAHARANI</span></a>
+      </div>
+      <div class="navbar-menu" id="navbar-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="nav-icon search-btn" id="search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="wishlist.html" class="nav-icon" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <a href="cart.html" class="nav-icon cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="m1 1 4 4h15l-1 9H6"/></svg>
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+        <button class="nav-icon menu-btn" id="menu-btn" aria-label="Menu">
+          <span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="../index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop</a>
+      <a href="collections.html" class="mobile-nav-link">Collections</a>
+      <a href="about.html" class="mobile-nav-link active">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+  </div>
+
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-container">
+      <button class="search-close" id="search-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <input type="text" class="search-input" placeholder="Search luxury couture..." id="search-input">
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <span class="page-banner-kicker">Est. Rajasthan</span>
+      <h1 class="page-banner-title">Our Heritage</h1>
+      <p class="page-banner-subtitle">A legacy of royal craftsmanship, preserved for generations</p>
+    </div>
+
+    <section class="about-section">
+      <div class="about-intro">
+        <p class="about-intro-text">"We do not make clothing. We create heirlooms — pieces that carry the memory of artisans, the soul of Rajasthan, and the grace of royalty into the hands of those who understand their worth."</p>
+      </div>
+
+      <div class="about-stats reveal" data-reveal>
+        <div class="stat-item"><span class="stat-number">150+</span><span class="stat-label">Years of Heritage</span></div>
+        <div class="stat-item"><span class="stat-number">23</span><span class="stat-label">Master Artisans</span></div>
+        <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Atelier Cities</span></div>
+        <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Handcrafted</span></div>
+      </div>
+
+      <div class="about-story reveal" data-reveal>
+        <div class="about-story-img">
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=90" alt="Master artisan at work" loading="lazy">
+        </div>
+        <div class="about-story-content">
+          <span class="section-kicker">Our Beginnings</span>
+          <h2>Born in the Royal Courts of Jaipur</h2>
+          <p>Maharani was born from the needle and thread of Jaipur's royal embroiderers — artisans whose families had served the Maharajas for generations. In a world that moved toward mass production, we chose to move deeper into craft.</p>
+          <p>Each piece we create passes through at least twelve pairs of hands before it reaches you. From the weavers who set the base fabric to the zardozi masters who lay the gold, every step is a meditation on excellence.</p>
+          <a href="shop.html" class="story-link"><span class="link-text">Discover Our Work</span> →</a>
+        </div>
+      </div>
+
+      <div class="about-story reverse reveal" data-reveal>
+        <div class="about-story-img">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&q=90" alt="Luxury couture piece" loading="lazy">
+        </div>
+        <div class="about-story-content">
+          <span class="section-kicker">Our Philosophy</span>
+          <h2>Luxury That Transcends Time</h2>
+          <p>We believe that true luxury is not in the price tag — it is in the intention. Every Maharani piece is designed to be worn once and treasured forever; to be passed from mother to daughter, carrying with it the stories of the celebrations it witnessed.</p>
+          <p>We source only the finest silk, velvet and organza from heritage looms across India, and our 22k gold threads are procured directly from Rajasthan's oldest gold traders.</p>
+          <a href="collections.html" class="story-link"><span class="link-text">Explore Collections</span> →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="luxury-features">
+      <div class="section-header">
+        <h2 class="section-title">Why Collectors Choose Us</h2>
+        <p class="section-subtitle">Uncompromising standards in every detail</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
+          <h3 class="feature-title">Handcrafted Excellence</h3>
+          <p class="feature-desc">Every piece is handcrafted by master artisans with 30+ years of experience in traditional Rajasthani embroidery techniques.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <h3 class="feature-title">Heritage Materials</h3>
+          <p class="feature-desc">Premium silk, velvet, and authentic 22-karat gold thread sourced directly from Rajasthan's finest heritage suppliers.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal>
+          <div class="feature-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+          <h3 class="feature-title">Luxury Packaging</h3>
+          <p class="feature-desc">Each couture piece arrives in bespoke heritage packaging with preservation guides and lifetime care support.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo">MAHARANI</a>
+        <p class="footer-tagline">Luxury Rajasthani Heritage Couture</p>
+        <p class="footer-desc">Timeless craftsmanship for the discerning collector</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Collections</h4>
+          <a href="collections.html#bridal">Bridal Couture</a>
+          <a href="collections.html#traditional">Traditional Wear</a>
+          <a href="collections.html#zardozi">Zardozi</a>
+          <a href="shop.html">New Arrivals</a>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Customer Care</h4>
+          <a href="#">Size Guide</a>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Care Instructions</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-column">
+          <h4>Newsletter</h4>
+          <p class="newsletter-text">Stay updated with our latest collections</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright"><p>&copy; 2026 Maharani. All rights reserved.</p></div>
+        <div class="footer-locations">
+          <span>Jaipur</span><span>·</span><span>Udaipur</span><span>·</span><span>Mumbai</span><span>·</span><span>Delhi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

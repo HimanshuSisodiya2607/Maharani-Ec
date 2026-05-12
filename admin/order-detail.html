@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order #1052 — Maharani Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo"><span class="brand-name">MAHARANI</span><span class="brand-sub">Admin</span></div>
+      <button class="sidebar-toggle" id="sidebarToggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Overview</div>
+        <a href="dashboard.html" class="nav-item" data-tooltip="Dashboard"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-label">Dashboard</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">Catalogue</div>
+        <a href="products.html" class="nav-item" data-tooltip="Products"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span class="nav-label">Products</span><span class="nav-badge">24</span></a>
+        <a href="orders.html" class="nav-item active" data-tooltip="Orders"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="nav-label">Orders</span><span class="nav-badge">8</span></a>
+        <a href="customers.html" class="nav-item" data-tooltip="Customers"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="nav-label">Customers</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">Analytics</div>
+        <a href="analytics.html" class="nav-item" data-tooltip="Reports"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="nav-label">Reports</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">System</div>
+        <a href="settings.html" class="nav-item" data-tooltip="Settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span class="nav-label">Settings</span></a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">A</div>
+        <div class="user-info"><div class="user-name">Arjun Mehta</div><div class="user-role">Super Admin</div></div>
+        <a href="login.html" class="logout-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+
+  <div class="admin-main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <nav class="breadcrumb">
+          <a href="dashboard.html">Dashboard</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="orders.html">Orders</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current">#1052</span>
+        </nav>
+      </div>
+      <div class="topbar-right">
+        <div class="dropdown-wrap">
+          <button class="topbar-btn" id="notifBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-dot"></span></button>
+          <div class="dropdown-menu notif-dropdown hidden" id="notifDropdown"><div class="dropdown-header">Notifications</div></div>
+        </div>
+        <div class="topbar-divider"></div>
+        <div class="dropdown-wrap">
+          <div class="topbar-profile" id="profileBtn"><div class="topbar-avatar">A</div><span class="topbar-profile-name">Admin</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="dropdown-menu profile-dropdown hidden" id="profileDropdown"><a href="login.html" class="dropdown-item danger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</a></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-header">
+        <div class="page-title-group">
+          <h1 class="page-title">Order <span class="text-gold">#1052</span></h1>
+          <p class="page-subtitle">Placed on 12 May 2026 at 10:14 AM &nbsp;·&nbsp; <span class="badge badge-pending">Pending</span></p>
+        </div>
+        <div class="page-actions">
+          <a href="orders.html" class="btn btn-secondary btn-sm">← Back to Orders</a>
+          <button class="btn btn-ghost btn-sm" onclick="showToast('Invoice', 'Generating invoice PDF…', 'info')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Invoice
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="markShipped()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            Mark as Shipped
+          </button>
+        </div>
+      </div>
+
+      <div class="order-detail-grid">
+        <!-- Left Column -->
+        <div>
+          <!-- Order Timeline -->
+          <div class="admin-card mb-20">
+            <div class="card-header"><span class="card-title">Order Timeline</span></div>
+            <div class="card-body">
+              <div class="order-timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot completed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div class="timeline-title">Order Placed</div>
+                  <div class="timeline-date">12 May 2026, 10:14 AM — Payment confirmed via UPI</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot active"></div>
+                  <div class="timeline-title" style="color:var(--gold)">Order Confirmed</div>
+                  <div class="timeline-date">12 May 2026, 10:32 AM — Awaiting dispatch from Mumbai Warehouse</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-title" style="color:var(--ivory-3)">Processing</div>
+                  <div class="timeline-date" style="color:var(--ivory-3)">Packing and quality check pending</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-title" style="color:var(--ivory-3)">Shipped</div>
+                  <div class="timeline-date" style="color:var(--ivory-3)">Awaiting handover to courier</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-title" style="color:var(--ivory-3)">Delivered</div>
+                  <div class="timeline-date" style="color:var(--ivory-3)">Expected: 15–17 May 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Items -->
+          <div class="admin-card mb-20">
+            <div class="card-header"><span class="card-title">Order Items</span></div>
+            <div class="table-wrap" style="border:none;border-radius:0;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="td-with-image">
+                        <div class="product-thumb-placeholder">RL</div>
+                        <div>
+                          <div class="td-primary">Royal Bridal Lehenga — Crimson Gold</div>
+                          <div class="td-secondary">SKU: MHR-LEH-001-CG</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>M</td>
+                    <td>1</td>
+                    <td class="price-tag">₹2,28,000</td>
+                    <td class="price-tag">₹2,28,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="td-with-image">
+                        <div class="product-thumb-placeholder">ZD</div>
+                        <div>
+                          <div class="td-primary">Zardosi Bridal Dupatta — Ivory</div>
+                          <div class="td-secondary">SKU: MHR-DUP-008-IV</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Free Size</td>
+                    <td>1</td>
+                    <td class="price-tag">₹20,000</td>
+                    <td class="price-tag">₹20,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Order Notes -->
+          <div class="admin-card">
+            <div class="card-header"><span class="card-title">Order Notes</span></div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Customer Note</label>
+                <div style="background:var(--surface-3);border:1px solid var(--border);border-radius:6px;padding:12px;font-size:13.5px;color:var(--ivory-2);margin-bottom:16px">
+                  "Please ensure the lehenga is packed in a premium box with tissue lining. This is a bridal gift."
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Internal Notes (not visible to customer)</label>
+                <textarea class="form-textarea" rows="3" placeholder="Add a private note about this order…"></textarea>
+              </div>
+              <div style="margin-top:12px;text-align:right">
+                <button class="btn btn-ghost btn-sm" onclick="showToast('Saved', 'Note saved successfully.', 'success')">Save Note</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+          <!-- Order Summary -->
+          <div class="admin-card mb-20">
+            <div class="card-header"><span class="card-title">Order Summary</span></div>
+            <div class="card-body">
+              <div class="info-list">
+                <div class="info-row">
+                  <span class="info-label">Subtotal (2 items)</span>
+                  <span class="info-value">₹2,48,000</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">GST (18%)</span>
+                  <span class="info-value">Included</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Shipping</span>
+                  <span class="info-value" style="color:#4ade80">Free</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Discount</span>
+                  <span class="info-value" style="color:#4ade80">– ₹0</span>
+                </div>
+                <div class="divider" style="margin:10px 0"></div>
+                <div class="info-row">
+                  <span class="info-label fw-600">Total</span>
+                  <span class="info-value total">₹2,48,000</span>
+                </div>
+                <div class="info-row" style="margin-top:8px">
+                  <span class="info-label">Payment Method</span>
+                  <span class="info-value">UPI (PhonePe)</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Transaction ID</span>
+                  <span class="info-value text-sm">TXN9924813X</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Info -->
+          <div class="admin-card mb-20">
+            <div class="card-header">
+              <span class="card-title">Customer</span>
+              <a href="customers.html" class="btn btn-ghost btn-sm">View Profile</a>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+                <div class="avatar-circle">PS</div>
+                <div>
+                  <div style="font-weight:600;color:var(--ivory)">Priya Sharma</div>
+                  <div style="font-size:12px;color:var(--ivory-3)">Customer since Jan 2025 · 12 orders</div>
+                </div>
+              </div>
+              <div class="info-list">
+                <div class="info-row">
+                  <span class="info-label">Email</span>
+                  <span class="info-value text-sm">priya.s@gmail.com</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Phone</span>
+                  <span class="info-value">+91 98200 54321</span>
+                </div>
+              </div>
+              <div class="divider" style="margin:12px 0"></div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--ivory-3);text-transform:uppercase;margin-bottom:8px">Delivery Address</div>
+              <div style="font-size:13.5px;color:var(--ivory-2);line-height:1.7">
+                Priya Sharma<br/>
+                Flat 4B, Regal Towers, Juhu Scheme<br/>
+                Mumbai – 400049<br/>
+                Maharashtra, India
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Info -->
+          <div class="admin-card mb-20">
+            <div class="card-header"><span class="card-title">Shipping</span></div>
+            <div class="card-body">
+              <div class="info-list">
+                <div class="info-row">
+                  <span class="info-label">Carrier</span>
+                  <span class="info-value">Blue Dart Express</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Tracking #</span>
+                  <span class="info-value text-gold">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Est. Delivery</span>
+                  <span class="info-value">15–17 May 2026</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Ships From</span>
+                  <span class="info-value">Mumbai Warehouse</span>
+                </div>
+              </div>
+              <div style="margin-top:14px">
+                <input type="text" class="form-input" placeholder="Enter tracking number" style="margin-bottom:8px"/>
+                <button class="btn btn-ghost btn-sm btn-full" onclick="showToast('Tracking', 'Tracking number saved.', 'success')">Save Tracking</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="admin-card">
+            <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn btn-primary btn-full" onclick="markShipped()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                Mark as Shipped
+              </button>
+              <button class="btn btn-ghost btn-full" onclick="showToast('Invoice', 'Generating invoice…', 'info')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Generate Invoice
+              </button>
+              <button class="btn btn-danger btn-full" onclick="confirmDelete('Issue a refund of ₹2,48,000 for Order #1052?', function(){ showToast(\'Refund\', \'Refund initiated successfully.\', \'info\'); })">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                Issue Refund
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Delete / Confirm Modal -->
+<div class="modal-overlay hidden" id="deleteModal">
+  <div class="modal-box confirm-modal">
+    <div class="modal-body">
+      <div class="confirm-icon" style="background:var(--amber-dim);color:#fbbf24">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      </div>
+      <div class="confirm-title">Confirm Refund</div>
+      <p class="confirm-desc">Issue a refund of ₹2,48,000 for Order #1052?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-modal-close="deleteModal">Cancel</button>
+      <button class="btn btn-danger" id="deleteConfirmBtn">Issue Refund</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="js/admin.js"></script>
+<script>
+function markShipped() {
+  showToast('Order Updated', 'Order #1052 marked as Shipped. Customer notified via SMS.', 'success');
+}
+</script>
+</body>
+</html>

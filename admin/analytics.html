@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics — Maharani Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Marcellus&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo"><span class="brand-name">MAHARANI</span><span class="brand-sub">Admin</span></div>
+      <button class="sidebar-toggle" id="sidebarToggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Overview</div>
+        <a href="dashboard.html" class="nav-item" data-tooltip="Dashboard"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-label">Dashboard</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">Catalogue</div>
+        <a href="products.html" class="nav-item" data-tooltip="Products"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span class="nav-label">Products</span><span class="nav-badge">24</span></a>
+        <a href="orders.html" class="nav-item" data-tooltip="Orders"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="nav-label">Orders</span><span class="nav-badge">8</span></a>
+        <a href="customers.html" class="nav-item" data-tooltip="Customers"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span class="nav-label">Customers</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">Analytics</div>
+        <a href="analytics.html" class="nav-item active" data-tooltip="Reports"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="nav-label">Reports</span></a>
+      </div>
+      <div class="nav-section"><div class="nav-section-label">System</div>
+        <a href="settings.html" class="nav-item" data-tooltip="Settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span class="nav-label">Settings</span></a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">A</div>
+        <div class="user-info"><div class="user-name">Arjun Mehta</div><div class="user-role">Super Admin</div></div>
+        <a href="login.html" class="logout-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+
+  <div class="admin-main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <nav class="breadcrumb">
+          <a href="dashboard.html">Dashboard</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current">Analytics</span>
+        </nav>
+      </div>
+      <div class="topbar-right">
+        <div class="dropdown-wrap">
+          <button class="topbar-btn" id="notifBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-dot"></span></button>
+          <div class="dropdown-menu notif-dropdown hidden" id="notifDropdown"><div class="dropdown-header">Notifications</div></div>
+        </div>
+        <div class="topbar-divider"></div>
+        <div class="dropdown-wrap">
+          <div class="topbar-profile" id="profileBtn"><div class="topbar-avatar">A</div><span class="topbar-profile-name">Admin</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="dropdown-menu profile-dropdown hidden" id="profileDropdown"><a href="login.html" class="dropdown-item danger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</a></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-header">
+        <div class="page-title-group">
+          <h1 class="page-title">Analytics &amp; Reports</h1>
+          <p class="page-subtitle">Apr 2025 — Mar 2026 · Financial Year Overview</p>
+        </div>
+        <div class="page-actions">
+          <div class="date-range">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Apr 2025 – Mar 2026
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="showToast('Export', 'Generating analytics report…', 'info')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid mb-20">
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <span class="kpi-trend up">↑ 22.4%</span>
+          </div>
+          <div class="kpi-value">₹4.82Cr</div>
+          <div class="kpi-label">Annual Revenue</div>
+          <div class="kpi-sub">vs ₹3.94Cr last year</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+            <span class="kpi-trend up">↑ 18.2%</span>
+          </div>
+          <div class="kpi-value">1,284</div>
+          <div class="kpi-label">Total Orders</div>
+          <div class="kpi-sub">vs 1,086 last year</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <span class="kpi-trend up">↑ 3.5%</span>
+          </div>
+          <div class="kpi-value">₹37,600</div>
+          <div class="kpi-label">Avg. Order Value</div>
+          <div class="kpi-sub">vs ₹36,300 last year</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div class="kpi-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <span class="kpi-trend up">↑ 0.6%</span>
+          </div>
+          <div class="kpi-value">3.4%</div>
+          <div class="kpi-label">Conversion Rate</div>
+          <div class="kpi-sub">vs 2.8% last year</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Revenue Chart + Orders Trend -->
+      <div class="two-col section-gap">
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Revenue by Month</span></div>
+          <div class="card-body">
+            <div class="chart-wrap" id="monthlyRevenueBar" style="min-height:200px"></div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Orders Trend</span></div>
+          <div class="card-body">
+            <div class="chart-wrap" id="ordersTrendChart" style="min-height:200px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Category Chart + Acquisition Donut -->
+      <div class="two-col section-gap">
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Top Selling Categories</span></div>
+          <div class="card-body">
+            <div class="hbar-item">
+              <div class="hbar-label"><span>Lehenga</span><span>420 units · ₹2.1Cr</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-label"><span>Saree</span><span>318 units · ₹1.48Cr</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:76%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-label"><span>Ensemble</span><span>246 units · ₹98.4L</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:59%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-label"><span>Dupatta</span><span>178 units · ₹26.7L</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:42%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-label"><span>Accessories</span><span>122 units · ₹9.8L</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:29%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Customer Acquisition</span></div>
+          <div class="card-body" style="display:flex;justify-content:center;">
+            <div id="categoryDonut" style="max-width:280px;width:100%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: Top Products + Geographic -->
+      <div class="two-col section-gap">
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Top Products by Revenue</span></div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Product</th>
+                  <th>Units Sold</th>
+                  <th>Revenue</th>
+                  <th>Growth</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="rank-badge rank-1">1</span></td>
+                  <td><div class="td-primary">Royal Bridal Lehenga</div><div class="td-secondary">Lehenga</div></td>
+                  <td>74</td>
+                  <td class="price-tag">₹18.4L</td>
+                  <td style="color:#4ade80">↑ 28%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge rank-2">2</span></td>
+                  <td><div class="td-primary">Heritage Banarasi Saree</div><div class="td-secondary">Saree</div></td>
+                  <td>63</td>
+                  <td class="price-tag">₹12.1L</td>
+                  <td style="color:#4ade80">↑ 15%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge rank-3">3</span></td>
+                  <td><div class="td-primary">Zardosi Anarkali Ensemble</div><div class="td-secondary">Ensemble</div></td>
+                  <td>48</td>
+                  <td class="price-tag">₹9.6L</td>
+                  <td style="color:#4ade80">↑ 34%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge">4</span></td>
+                  <td><div class="td-primary">Pashmina Lehenga — Blush Rose</div><div class="td-secondary">Lehenga</div></td>
+                  <td>42</td>
+                  <td class="price-tag">₹7.8L</td>
+                  <td style="color:#4ade80">↑ 11%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge">5</span></td>
+                  <td><div class="td-primary">Chanderi Silk Dupatta</div><div class="td-secondary">Dupatta</div></td>
+                  <td>124</td>
+                  <td class="price-tag">₹6.2L</td>
+                  <td style="color:#4ade80">↑ 42%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge">6</span></td>
+                  <td><div class="td-primary">Kanjivaram Silk Saree — Gold</div><div class="td-secondary">Saree</div></td>
+                  <td>41</td>
+                  <td class="price-tag">₹5.8L</td>
+                  <td style="color:#f87171">↓ 4%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge">7</span></td>
+                  <td><div class="td-primary">Mughal Garden Silk Ensemble</div><div class="td-secondary">Ensemble</div></td>
+                  <td>32</td>
+                  <td class="price-tag">₹5.1L</td>
+                  <td style="color:#4ade80">↑ 19%</td>
+                </tr>
+                <tr>
+                  <td><span class="rank-badge">8</span></td>
+                  <td><div class="td-primary">Bridal Dupatta — Ivory Zardosi</div><div class="td-secondary">Dupatta</div></td>
+                  <td>96</td>
+                  <td class="price-tag">₹4.8L</td>
+                  <td style="color:#4ade80">↑ 55%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-header"><span class="card-title">Geographic Breakdown</span></div>
+          <div class="card-body" style="padding-top:10px;padding-bottom:10px">
+            <div class="geo-item">
+              <div class="geo-rank">1</div>
+              <div class="geo-city">Mumbai, Maharashtra</div>
+              <div class="geo-orders">312 orders</div>
+              <div class="geo-revenue">₹1.18Cr</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">2</div>
+              <div class="geo-city">Delhi, NCR</div>
+              <div class="geo-orders">248 orders</div>
+              <div class="geo-revenue">₹94.2L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">3</div>
+              <div class="geo-city">Bengaluru, Karnataka</div>
+              <div class="geo-orders">186 orders</div>
+              <div class="geo-revenue">₹70.8L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">4</div>
+              <div class="geo-city">Jaipur, Rajasthan</div>
+              <div class="geo-orders">142 orders</div>
+              <div class="geo-revenue">₹53.7L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">5</div>
+              <div class="geo-city">Hyderabad, Telangana</div>
+              <div class="geo-orders">118 orders</div>
+              <div class="geo-revenue">₹44.8L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">6</div>
+              <div class="geo-city">Chennai, Tamil Nadu</div>
+              <div class="geo-orders">96 orders</div>
+              <div class="geo-revenue">₹36.5L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">7</div>
+              <div class="geo-city">Kolkata, West Bengal</div>
+              <div class="geo-orders">84 orders</div>
+              <div class="geo-revenue">₹31.9L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">8</div>
+              <div class="geo-city">Ahmedabad, Gujarat</div>
+              <div class="geo-orders">72 orders</div>
+              <div class="geo-revenue">₹27.3L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">9</div>
+              <div class="geo-city">Pune, Maharashtra</div>
+              <div class="geo-orders">64 orders</div>
+              <div class="geo-revenue">₹24.3L</div>
+            </div>
+            <div class="geo-item">
+              <div class="geo-rank">10</div>
+              <div class="geo-city">Other Cities</div>
+              <div class="geo-orders">+62 orders</div>
+              <div class="geo-revenue">₹23.5L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="js/admin.js"></script>
+</body>
+</html>
